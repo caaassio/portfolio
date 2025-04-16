@@ -112,3 +112,64 @@ document.getElementById("meuFormulario").addEventListener("submit", function (e)
   function fecharPopup() {
     document.getElementById("popupObrigado").style.display = "none";
   }
+
+// ----------------- Modal  --------------------------------------
+const modal = document.getElementById("modal");
+const modalImgContainer = document.getElementById("modal-img"); // Vai virar um container
+const modalText = document.getElementById("modal-text");
+const closeBtn = document.querySelector(".modal .close");
+
+document.querySelectorAll(".card").forEach(card => {
+  card.addEventListener("click", () => {
+    const imgElement = card.querySelector("img");
+    const imgSrc = imgElement.getAttribute("src");
+    const text = card.querySelector("p").innerText;
+
+    // Deriva os caminhos das versões desktop e mobile
+    const imgDesk = imgSrc;
+    const imgMobile = imgSrc.replace("tela-desk", "tela-mobile");
+
+    // Cria o elemento <picture> com <source> e <img>
+    modalImgContainer.innerHTML = `
+      <picture>
+        <source srcset="${imgMobile}" media="(max-width: 768px)">
+        <img src="${imgDesk}" alt="Imagem do projeto">
+      </picture>
+    `;
+
+    modalText.innerText = text;
+    modal.classList.add("show");
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  modal.classList.remove("show");
+  modal.classList.add("hide");
+
+  setTimeout(() => {
+    modal.style.display = "none";
+    modal.classList.remove("hide");
+  }, 400); // tempo igual ao popOut
+});
+
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.remove("show");
+    modal.classList.add("hide");
+
+    setTimeout(() => {
+      modal.style.display = "none";
+      modal.classList.remove("hide");
+    }, 400);
+  }
+});
+
+const observer = new MutationObserver(() => {
+  if (modal.classList.contains("show")) {
+    modal.style.display = "flex";
+  }
+});
+
+observer.observe(modal, { attributes: true });
+
+

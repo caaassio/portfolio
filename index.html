@@ -109,32 +109,53 @@
             <div class="group-card">
 
                 <div class="card">
-                    <img src="./components/img/tela-desk.jpg" alt="">
+
+                <picture>
+                    <source srcset="./components/img/tela-mobile.jpg" media="(max-width: 768px)">
+                    <img src="./components/img/tela-desk.jpg" alt="Imagem do projeto">
+                </picture>
+
+                    <p>Esse é um site feito com html, css, javascript</p>
+
+                </div>
+
+                <div class="card">
+                    <picture>
+                        <source srcset="./components/img/tela-mobile.jpg" media="(max-width: 768px)">
+                        <img src="./components/img/tela-desk.jpg" alt="Imagem do projeto">
+                    </picture>
                     <p>Esse é um site feito com html e css</p>
                 </div>
 
                 <div class="card">
-                    <img src="./components/img/tela-desk.jpg" alt="">
-                    <p>Esse é um site feito com html e css</p>
-                </div>
-
-                <div class="card">
-                    <img src="./components/img/tela-desk.jpg" alt="">
+                    <picture>
+                        <source srcset="./components/img/tela-mobile.jpg" media="(max-width: 768px)">
+                        <img src="./components/img/tela-desk.jpg" alt="Imagem do projeto">
+                    </picture>
                     <p>Esse é um site feito com html e css e muito javascript</p>
                 </div>
 
                 <div class="card">
-                    <img src="./components/img/tela-desk.jpg" alt="">
+                    <picture>
+                        <source srcset="./components/img/tela-mobile.jpg" media="(max-width: 768px)">
+                        <img src="./components/img/tela-desk.jpg" alt="Imagem do projeto">
+                    </picture>
                     <p>Esse é um site feito com html e css</p>
                 </div>
                 
                 <div class="card">
-                    <img src="./components/img/tela-desk.jpg" alt="">
+                    <picture>
+                        <source srcset="./components/img/tela-mobile.jpg" media="(max-width: 768px)">
+                        <img src="./components/img/tela-desk.jpg" alt="Imagem do projeto">
+                    </picture>
                     <p>Esse é um site feito com html e css</p>
                 </div>
                 
                 <div class="card">
-                    <img src="./components/img/tela-desk.jpg" alt="">
+                    <picture>
+                        <source srcset="./components/img/tela-mobile.jpg" media="(max-width: 768px)">
+                        <img src="./components/img/tela-desk.jpg" alt="Imagem do projeto">
+                    </picture>
                     <p>Esse é um site feito com html e css</p>
                 </div>
             </div>
@@ -201,8 +222,6 @@
                 </form>
                 </div>
 
-
-
             </div>
 
         </section>
@@ -219,6 +238,15 @@
         <div class="popup-content">
           <p>Obrigado pelo contato! <i class="fa-solid fa-thumbs-up"></i></p>
           <button class="btn-popup" onclick="fecharPopup()">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="modal-img"></div>
+        <p id="modal-text"></p>
         </div>
     </div>
 
