@@ -172,7 +172,6 @@ header ul li a {
  header #escrito {
      height: 60px;
      box-sizing: border-box;
-
  }
  
  header a:link,
@@ -220,7 +219,6 @@ header ul li a {
     opacity: 0.5;
     text-transform: uppercase;
 }
-  
 
 .txt-wrapper{
     align-items: center;
@@ -342,7 +340,6 @@ header ul li a {
   
 #about img {
     width: 600px;
-    /* border: 1px solid red; */
     padding: 0;
     margin: 0;
     display: block;
@@ -419,9 +416,7 @@ header ul li a {
     border-top-right-radius: 14px;
 }
 
-/* Modal base */
 .modal {
-    
     display: none;
     position: fixed;
     z-index: 999;
@@ -429,13 +424,12 @@ header ul li a {
     top: 0;
     width: 100vw;
     height: 100vh;
-    backdrop-filter: blur(20px); /* <-- o blur */
-    background-color: rgba(0, 0, 0, 0.3); /* leve camada branca transparente por cima */
+    backdrop-filter: blur(20px); 
+    background-color: rgba(0, 0, 0, 0.3); 
     justify-content: center;
     align-items: center;
     transition: opacity 0.3s ease;
     opacity: 0;
-
 }
   
 .modal.show {
@@ -800,30 +794,39 @@ header ul li a {
 
     header ul {
         z-index: 11;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         flex-direction: column;
         position: absolute;
-        top: 3.9em;
+        top: 6em;
         right: 0;
         width: 100%;
-        background-color: var(--cor-base);
-        padding: 10px 0;
+        height: 100%;
+        backdrop-filter: blur(20px); 
+        background-color: rgba(15, 15, 15, 0.3); 
+        padding: 0;
+        margin: 0;
         opacity: 0;
         visibility: hidden;
-        transform: translateY(-100%);
         transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+        gap: 50px;
     }
  
     header ul li {
         text-align: center;
-        margin: 10px 0;
-        padding: 10px;
+        margin: 15px 0;
+        padding: 15px;
+    }
+
+    header ul li a{
+        font-size: 26px;
     }
  
     header ul.show {
         z-index: 12;
         opacity: 1;
         visibility: visible;
-        transform: translateX(0)
     }
 
     #container{
