@@ -123,7 +123,7 @@ document.querySelectorAll(".card").forEach(card => {
   card.addEventListener("click", () => {
     const imgElement = card.querySelector("img");
     const imgSrc = imgElement.getAttribute("src");
-    const text = card.querySelector("p").innerText;
+    const text = card.querySelector("p").innerHTML;
 
     // Deriva os caminhos das versões desktop e mobile
     const imgDesk = imgSrc;
@@ -137,7 +137,7 @@ document.querySelectorAll(".card").forEach(card => {
       </picture>
     `;
 
-    modalText.innerText = text;
+    modalText.innerHTML = text;
     modal.classList.add("show");
   });
 });
@@ -172,4 +172,69 @@ const observer = new MutationObserver(() => {
 
 observer.observe(modal, { attributes: true });
 
+// --------------- carrossel -----------------------------------
+const cards = document.querySelectorAll(".card");
+let currentIndex = 0;
 
+function openModal(index) {
+  const card = cards[index];
+  const imgElement = card.querySelector("img");
+  const imgSrc = imgElement.getAttribute("src");
+  const text = card.querySelector("p").innerHTML;
+
+  const imgDesk = imgSrc;
+  const imgMobile = imgSrc.replace("tela-desk", "tela-mobile");
+
+  modalImgContainer.innerHTML = `
+    <picture>
+      <source srcset="${imgMobile}" media="(max-width: 768px)">
+      <img src="${imgDesk}" alt="Imagem do projeto">
+    </picture>
+  `;
+
+  modalText.innerHTML = text;
+  modal.classList.add("show");
+  currentIndex = index;
+}
+
+cards.forEach((card, index) => {
+  card.addEventListener("click", () => openModal(index));
+});
+
+document.getElementById("prev-btn").addEventListener("click", (e) => {
+  e.stopPropagation();
+  currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+  openModal(currentIndex);
+});
+
+document.getElementById("next-btn").addEventListener("click", (e) => {
+  e.stopPropagation();
+  currentIndex = (currentIndex + 1) % cards.length;
+  openModal(currentIndex);
+});
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+modal.addEventListener("touchstart", (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+modal.addEventListener("touchend", (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  const swipeDistance = touchEndX - touchStartX;
+
+  if (swipeDistance > 50) {
+    // Swipe para a direita → card anterior
+    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+    openModal(currentIndex);
+  } else if (swipeDistance < -50) {
+    // Swipe para a esquerda → próximo card
+    currentIndex = (currentIndex + 1) % cards.length;
+    openModal(currentIndex);
+  }
+}
