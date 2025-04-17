@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Web Site</title>
+    <link rel="stylesheet" href="./css/style90s.css">
+
+    <link rel="shortcut icon" href="components/img/logo-icon.png">
+
+</head>
+<body>
+    <div id="container">
+
+        <img class="bg" alt="">
+        
+        <div class="header">
+
+            <img class="foto" src="./components/img/foto90s2.jpg" alt="">
+
+            <h1>
+                the <br>
+                Cassio Rodrigues <br>
+                portfolio
+            </h1>
+
+            <ul class="menu">
+                <li><a href="./awesome-about.html">Sobre</a></li>
+                <li><a href="./awesome-portfolio.html">Portfólio</a></li>
+                <li><a href="./awesome-contact.html">Contato</a></li>
+            </ul>
+
+        </div>
+        
+        <div class="barra-gradiente"></div>
+    
+        <div class="data-e-hora">
+            <div id="data-hoje"></div>
+            <div id="hora-agora"></div>
+        </div>
+    
+        <div class="selos">
+            <img src="./components/img/bemvindo.gif" alt="">
+            <img src="./components/img/selo1.png" alt="">
+            <img src="./components/img/selo2.png" alt="">
+            <img src="./components/img/selo3.gif" alt="">
+        </div>
+
+        <footer class="rodape"><a href="./index.html">Chato</a> <p>Proudly designed by Cassio Rodrigues</p></footer>
+
+    </div>
+
+    <script>
+        const dataHoje = new Date();
+        const data = { day: 'numeric', month: 'long', year: 'numeric' };
+
+        document.getElementById('data-hoje').textContent = dataHoje.toLocaleDateString('pt-BR', data);
+
+        function atualizarHora() {
+            const agora = new Date();
+            const horas = agora.getHours().toString().padStart(2, '0');
+            const minutos = agora.getMinutes().toString().padStart(2, '0');
+            const segundos = agora.getSeconds().toString().padStart(2, "0");
+            document.getElementById('hora-agora').textContent = `${horas}:${minutos}:${segundos}`;
+            }
+
+            atualizarHora();
+
+            setInterval(atualizarHora, 1000);
+
+    </script>
+
+</body>
+</html>
