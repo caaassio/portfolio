@@ -15,11 +15,10 @@ a{
     height: 100vh;
     background-image: url(../components/img/bg.jpg);
     z-index: 0; 
-    
 }
 
 .foto{
-    display: flex;
+    display: block;
     position:absolute;
     left: 0;
     top: 0;
@@ -27,12 +26,10 @@ a{
     margin: 20px;
     border: 5px solid white;
     z-index: 2;
-    
 }
 
 .header h1{
     color: rgb(255, 255, 255);
-    display: flex;
     position: absolute;
     margin-top: -3px;
     top: 0;
@@ -56,7 +53,7 @@ a{
 }
 
 .menu{
-    display: flex;
+    display: block;
     flex-direction: column;
     position: absolute;
     top: 350px;
@@ -65,7 +62,7 @@ a{
 
 ul.menu {
     color: rgb(3, 255, 3);
-    display: flex;
+    display: block;
     line-height: 2em;
     font-size: 24px;
     list-style: none;
@@ -91,7 +88,7 @@ ul.menu li::before {
 
 .barra-gradiente {
     height: 7px;
-    width: 80%;
+    width: 1600px;
     background: linear-gradient(to right, #3cff00, #0400ff, #51ff00);
     margin: 5px auto 0 auto; 
     display: flex;
@@ -121,24 +118,22 @@ ul.menu li::before {
 }
 
 .selos {
-    margin-left: 15%;
+    margin-left: 320px;
     position: absolute;
     bottom: 100px;
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    width: 60%; 
+    width: 1150px; 
     z-index: 10;
-    
 }
 
 .rodape{
     display: flex;
     color: #3cff00;
     position: absolute;
-    left: 45%;
+    left: 850px;
     bottom: 0;
-    
 }
 
 .cubo{
@@ -146,12 +141,11 @@ ul.menu li::before {
     height: 400px;
     background: linear-gradient(135deg, blue, white);   
     display: flex;
-    position: relative;
+    position: absolute;
     z-index: 3;
     top: 20px;
-    left: 20%;
+    left: 380px;
     overflow: visible;
-    
 }
 
 .cubo p{
@@ -159,9 +153,9 @@ ul.menu li::before {
     font-style: italic;
     font-weight: 700;
     display: flex;
-    position: relative;
-    left: 20%;
-    top: -30px;
+    position: absolute;
+    left: 120px;
+    top: -90px;
     line-height: 0.9;
     color: green;
     text-shadow:
@@ -171,6 +165,7 @@ ul.menu li::before {
 }
 
 .img-foto{
+    border: 1px solid;
     display: flex;
     height: 420px;
     width: auto;
@@ -201,7 +196,7 @@ ul.menu li::before {
 }
 
 .contato-gif{
-    left: 40%;
+    left: 790px;
     top: 30px;
     width: 200px;
     box-sizing: border-box;
@@ -211,7 +206,7 @@ ul.menu li::before {
 .form{
     display: flex;
     position: relative;
-    left: 35%;
+    left: 680px;
     top: 50px;
     height: 600px;
     width: 600px;
@@ -235,7 +230,6 @@ input, textarea{
     outline-offset: -6px; /* empurra a borda pra dentro */
 }
 
-
 .popup {
     position: fixed;
     top: 0;
@@ -250,25 +244,23 @@ input, textarea{
 }
   
 .popup-content {
-    background: #222;
-    color: #fff;
+    outline: 2px dotted #5c5c5c; /* borda pontilhada */
+    outline-offset: -8px; /* empurra a borda pra dentro */
+    background-color: rgb(175, 175, 175);
+    color: #000000;
     padding: 30px;
     font-size: 24px;
-    border-radius: 10px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
     text-align: center;
 }
 
 .btn-popup{
     font-size: 24px;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 15px 35px;
-    border-radius: 14px;
     margin-top: 30px;
     border: 3px solid transparent;
     border-radius: 15px;
-    background: 
-    linear-gradient(var(--cor-base), var(--cor-base)) padding-box, 
-    linear-gradient(to right, #ff41df, #02c0fa) border-box; 
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -277,15 +269,28 @@ input, textarea{
     color: #151515;
     border: 3px solid transparent;
     border-radius: 15px;
-    background: 
-    linear-gradient(rgb(190, 190, 190), rgb(190, 190, 190)) padding-box, 
-    linear-gradient(to right, #02c0fa, #ff41df) border-box; 
     transition: all 0.3s ease;
+}
+
+button.btn-popup{
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    border-radius: 0px;
+    background-color: rgb(211, 211, 211);
+}
+
+button.btn-popup:hover{
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    border-radius: 0px;
+    background-color: rgb(163, 16, 16);
 }
 
 .header-portfolio .foto{
     height: 200px;
     box-sizing: border-box;
+}
+
+.foto img{
+    height: 190px;
 }
 
 .header-portfolio h1{
@@ -300,9 +305,7 @@ input, textarea{
 }
 
 .galeria{
-    
     width: 1300px;
-    
     display: flex;
     position: relative;
     top: 122px;
@@ -318,4 +321,8 @@ input, textarea{
 
 .img-port p{
     color: aquamarine;
+}
+
+.awesome-page .slider {
+    background: linear-gradient(to right, #3cff00, #0400ff, #51ff00);
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style-toggle.css">
     
     <!-- fontawesome pro -->
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
@@ -18,8 +19,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
     <title>COR</title>
+
 </head>
-<body>
+<body class="index-page">
 
     <header>
         <a href="../#home" class="link-logo">
@@ -33,9 +35,10 @@
             </button>
             <ul id="menu">
 
-                <li>
-                    <a href="./awesome-web-site.html" style="color: blueviolet;">AWESOME MODE</a>
-                </li>
+                <label class="switch">
+                    <input type="checkbox" id="toggleVersao">
+                    <span class="slider"></span>
+                </label>
 
                 <li>
                     <a href="#about">SOBRE</a>
@@ -260,5 +263,6 @@
     </div>
 
     <script src="./script.js"></script>
+    <script src="./script-toggle.js"></script>
 </body>
 </html>

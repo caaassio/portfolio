@@ -1172,5 +1172,13 @@ header ul li a {
         margin-left: auto;
         margin-right: auto;
     }
-
  }
+
+ .index-page .slider {
+    background: linear-gradient(to right, #02c0fa, #ff41df) border-box; 
+}
+
+.index-page .slider:before {
+    background-color: var(--cor-base);
+}
+
