@@ -31,19 +31,6 @@ function digitar(texto, callback) {
 
 digitar(texto, () => {
 
-    // setTimeout(() => {
-    //     elemento.innerHTML = "";
-    //     i = 0;
-    //     digitar(texto2);
-
-    //     setTimeout(() => {
-    //         elemento.innerHTML = "";
-    //         i = 0;
-    //         digitar(texto3);
-    //     }, 5000);
-
-    // }, 5000);
-
 });
 
 // ---------------------- efeito typing para mobile -----------
@@ -57,19 +44,6 @@ lines.forEach((line, index) => {
     line.classList.add('typed');
   }, delays[index]);
 });
-
-// -------------------------------- Transparência botão back to top ---------------------------
-// window.addEventListener("scroll", function () {
-//     let btt = document.querySelector(".btt");
-
-//         if (btt) {
-//             if (window.scrollY > 50) {
-//                 btt.style.opacity = "0.3";
-//             } else {
-//                 btt.style.opacity = "0.7";
-//             }
-//         }
-//     });
 
 
 // ------------------- foguete ---------------------------
@@ -113,128 +87,51 @@ document.getElementById("meuFormulario").addEventListener("submit", function (e)
     document.getElementById("popupObrigado").style.display = "none";
   }
 
-// ----------------- Modal  --------------------------------------
-const modal = document.getElementById("modal");
-const modalImgContainer = document.getElementById("modal-img"); // Vai virar um container
-const modalText = document.getElementById("modal-text");
-const closeBtn = document.querySelector(".modal .close");
 
-document.querySelectorAll(".card").forEach(card => {
-  card.addEventListener("click", () => {
-    const imgElement = card.querySelector("img");
-    const imgSrc = imgElement.getAttribute("src");
-    const text = card.querySelector("p").innerHTML;
+// --------------- Modal --------------------------------------
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modal-img');
+const modalDescription = document.getElementById('modal-description'); // Novo elemento para descrição
+const closeBtn = document.querySelector('.close-btn');
+const cardActions = document.getElementById('card-actions');
 
-    // Deriva os caminhos das versões desktop e mobile
-    const imgDesk = imgSrc;
-    const imgMobile = imgSrc.replace("tela-desk", "tela-mobile");
+// Seleciona todos os cards
+const cards = document.querySelectorAll('.card');
 
-    // Cria o elemento <picture> com <source> e <img>
-    modalImgContainer.innerHTML = `
-      <picture>
-        <source srcset="${imgMobile}" media="(max-width: 768px)">
-        <img src="${imgDesk}" alt="Imagem do projeto">
-      </picture>
-    `;
+// Para cada card, adiciona o evento de click
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+      const imgSrc = card.querySelector('img').src;
+      const description = card.getAttribute('data-description');
 
-    modalText.innerHTML = text;
-    modal.classList.add("show");
+      // Atualiza o conteúdo do modal
+      modalImg.src = imgSrc;
+      modalDescription.innerHTML = description;
+
+      // Limpa o conteúdo anterior do modal
+      cardActions.innerHTML = "";
+
+      // Clona o card-actions escondido do card clicado
+      const actions = card.querySelector('.card-actions');
+      if (actions) {
+          const clonedActions = actions.cloneNode(true); // Faz uma cópia completa
+          clonedActions.style.display = "flex"; // Garante que fique visível no modal
+          cardActions.appendChild(clonedActions);
+      }
+
+      // Mostra o modal
+      modal.style.display = 'flex';
   });
 });
 
-closeBtn.addEventListener("click", () => {
-  modal.classList.remove("show");
-  modal.classList.add("hide");
-
-  setTimeout(() => {
-    modal.style.display = "none";
-    modal.classList.remove("hide");
-  }, 400); // tempo igual ao popOut
+// Fecha o modal ao clicar no botão de fechar
+closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
 });
 
-modal.addEventListener("click", (e) => {
-  if (e.target === modal) {
-    modal.classList.remove("show");
-    modal.classList.add("hide");
-
-    setTimeout(() => {
-      modal.style.display = "none";
-      modal.classList.remove("hide");
-    }, 400);
-  }
+// (opcional) Fecha o modal ao clicar fora do conteúdo
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
 });
-
-const observer = new MutationObserver(() => {
-  if (modal.classList.contains("show")) {
-    modal.style.display = "flex";
-  }
-});
-
-observer.observe(modal, { attributes: true });
-
-// --------------- carrossel -----------------------------------
-const cards = document.querySelectorAll(".card");
-let currentIndex = 0;
-
-function openModal(index) {
-  const card = cards[index];
-  const imgElement = card.querySelector("img");
-  const imgSrc = imgElement.getAttribute("src");
-  const text = card.querySelector("p").innerHTML;
-
-  const imgDesk = imgSrc;
-  const imgMobile = imgSrc.replace("tela-desk", "tela-mobile");
-
-  modalImgContainer.innerHTML = `
-    <picture>
-      <source srcset="${imgMobile}" media="(max-width: 768px)">
-      <img src="${imgDesk}" alt="Imagem do projeto">
-    </picture>
-  `;
-
-  modalText.innerHTML = text;
-  modal.classList.add("show");
-  currentIndex = index;
-}
-
-cards.forEach((card, index) => {
-  card.addEventListener("click", () => openModal(index));
-});
-
-document.getElementById("prev-btn").addEventListener("click", (e) => {
-  e.stopPropagation();
-  currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-  openModal(currentIndex);
-});
-
-document.getElementById("next-btn").addEventListener("click", (e) => {
-  e.stopPropagation();
-  currentIndex = (currentIndex + 1) % cards.length;
-  openModal(currentIndex);
-});
-
-let touchStartX = 0;
-let touchEndX = 0;
-
-modal.addEventListener("touchstart", (e) => {
-  touchStartX = e.changedTouches[0].screenX;
-});
-
-modal.addEventListener("touchend", (e) => {
-  touchEndX = e.changedTouches[0].screenX;
-  handleSwipe();
-});
-
-function handleSwipe() {
-  const swipeDistance = touchEndX - touchStartX;
-
-  if (swipeDistance > 50) {
-    // Swipe para a direita → card anterior
-    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-    openModal(currentIndex);
-  } else if (swipeDistance < -50) {
-    // Swipe para a esquerda → próximo card
-    currentIndex = (currentIndex + 1) % cards.length;
-    openModal(currentIndex);
-  }
-}

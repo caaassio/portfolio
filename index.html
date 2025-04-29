@@ -116,59 +116,88 @@
 
             <div class="group-card">
 
-                <div class="card">
-
-                <picture>
-                    <source srcset="./components/img/tela-mobile.jpg" media="(max-width: 768px)">
-                    <img src="./components/img/tela-desk.jpg" alt="Imagem do projeto">
-                </picture>
-
-                    <p>Esse é um site feito com html, css, javascript.
-                    <a href="https://ana-carolline-psi.vercel.app/" target="_blank" rel="noopener noreferrer">Clique aqui</a>
-                    </p>
-
+                <div class="card" data-description="Este site foi desenvolvido para a psicóloga Ana Carolline com o objetivo de apresentar sua abordagem clínica e facilitar o agendamento de atendimentos online. <br><br> Construído em HTML, CSS e JavaScript, o layout prioriza uma navegação simples e acolhedora, refletindo a empatia e profissionalismo da Ana.<br><br> O design responsivo garante uma boa experiência em qualquer dispositivo, e o conteúdo foi organizado para destacar sua formação, serviços oferecidos, depoimentos e um blog com temas da área da saúde mental.<br><br> Todo o projeto foi pensado para fortalecer a presença digital da profissional e gerar mais confiança nos pacientes desde o primeiro contato.">
+                    <picture>
+                        <img src="./components/img/tela-desk.jpg">
+                    </picture>
+                    <p>1 Esse é um site feito com html e css</p>
+                    <div class="card-actions">
+                        <i class="fa-brands fa-html5" title="HTML5"></i>
+                        <i class="fa-brands fa-css3-alt" title="CSS3"></i>
+                        <i class="fa-brands fa-js" title="JavaScript"></i>
+                        <a href="https://exemplo.com" class="btn">Ver site</a>
+                        <a href="https://github.com/exemplo" class="btn">Repositório</a>
+                    </div>
                 </div>
 
                 <div class="card">
                     <picture>
-                        <source srcset="./components/img/tela-mobile2.jpg" media="(max-width: 768px)">
-                        <img src="./components/img/tela-desk2.jpg" alt="Imagem do projeto">
+                        <img src="./components/img/tela-desk2.jpg">
                     </picture>
                     <p>2 Esse é um site feito com html e css</p>
                 </div>
 
-                <div class="card">
+                <div class="card" data-description="Barbearia do Marcão – Site Institucional<br><br>
+                Tecnologias: HTML5, CSS3, JavaScript
+                <br><br>
+                Este projeto foi desenvolvido para a Barbearia do Marcão, com o objetivo de criar uma presença digital simples, funcional e alinhada com a identidade tradicional e ao mesmo tempo moderna da barbearia.
+                <br><br>
+                A estrutura do site foi construída com HTML5, garantindo semântica e acessibilidade. Para o visual, usei CSS3, focando em um design limpo, responsivo e com cores e tipografias que remetem ao universo clássico das barbearias. A interatividade do site foi implementada com JavaScript puro, incluindo navegação fluida, realce de elementos e formulário de contato funcional.
+                <br><br>
+                O projeto foi pensado para oferecer ao cliente uma vitrine digital que transmita confiança e facilite o agendamento de serviços. É uma solução leve, rápida e que funciona bem em qualquer dispositivo.
+                <br><br>
+                Esse projeto faz parte do meu portfólio como uma demonstração de criação de sites institucionais utilizando apenas tecnologias web fundamentais, sem frameworks.">
                     <picture>
-                        <source srcset="./components/img/tela-mobile3.jpg" media="(max-width: 768px)">
-                        <img src="./components/img/tela-desk3.jpg" alt="Imagem do projeto">
+                        <img src="./components/img/tela-desk3.jpg">
                     </picture>
-                    <p>3 Esse é um site feito com html e css e muito javascript</p>
+                    <p>3 Esse é um site feito com html e css</p>
+                    <div class="card-actions">
+                        <i class="fa-brands fa-html5" title="HTML5"></i>
+                        <i class="fa-brands fa-css3-alt" title="CSS3"></i>
+                        <i class="fa-brands fa-js" title="JavaScript"></i>
+                        <a href="https://exemplo.com" class="btn">Ver site</a>
+                        <a href="https://github.com/exemplo" class="btn">Repositório</a>
+                    </div>
                 </div>
 
                 <div class="card">
                     <picture>
-                        <source srcset="./components/img/tela-mobile2.jpg" media="(max-width: 768px)">
-                        <img src="./components/img/tela-desk2.jpg" alt="Imagem do projeto">
+                        <img src="./components/img/tela-desk2.jpg">
                     </picture>
                     <p>4 Esse é um site feito com html e css</p>
                 </div>
-                
+
                 <div class="card">
                     <picture>
-                        <source srcset="./components/img/tela-mobile.jpg" media="(max-width: 768px)">
-                        <img src="./components/img/tela-desk.jpg" alt="Imagem do projeto">
+                        <img src="./components/img/tela-desk3.jpg">
                     </picture>
                     <p>5 Esse é um site feito com html e css</p>
                 </div>
-                
+
                 <div class="card">
                     <picture>
-                        <source srcset="./components/img/tela-mobile3.jpg" media="(max-width: 768px)">
-                        <img src="./components/img/tela-desk3.jpg" alt="Imagem do projeto">
+                        <img src="./components/img/tela-desk.jpg">
                     </picture>
                     <p>6 Esse é um site feito com html e css</p>
                 </div>
+
             </div>
+
+
+        <!-- Modal -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <div class="modal-body">
+                    <img id="modal-img" src="" alt="Imagem do Projeto">
+                    <div id="modal-description" class="modal-description"></div>
+                </div>
+                
+                <div id="card-actions" class="card-actions">
+
+                </div>
+            </div>
+        </div>
 
         </section>
 
@@ -248,17 +277,6 @@
         <div class="popup-content">
           <p>Obrigado pelo contato! <i class="fa-solid fa-thumbs-up"></i></p>
           <button class="btn-popup" onclick="fecharPopup()">Fechar</button>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div id="modal" class="modal">
-        <button id="prev-btn" class="nav-btn"><i class="fa-regular fa-chevron-left"></i></button>
-        <button id="next-btn" class="nav-btn"><i class="fa-regular fa-chevron-right"></i></button>
-        <div class="modal-content">
-        <span class="close">&times;</span>
-        <div id="modal-img"></div>
-        <p id="modal-text"></p>
         </div>
     </div>
 
