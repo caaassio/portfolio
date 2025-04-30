@@ -91,47 +91,44 @@ document.getElementById("meuFormulario").addEventListener("submit", function (e)
 // --------------- Modal --------------------------------------
 const modal = document.getElementById('modal');
 const modalImg = document.getElementById('modal-img');
-const modalDescription = document.getElementById('modal-description'); // Novo elemento para descrição
+const modalDescription = document.getElementById('modal-description');
 const closeBtn = document.querySelector('.close-btn');
 const cardActions = document.getElementById('card-actions');
+const modalContent = modal.querySelector('.modal-content');
 
-// Seleciona todos os cards
 const cards = document.querySelectorAll('.card');
 
-// Para cada card, adiciona o evento de click
 cards.forEach(card => {
   card.addEventListener('click', () => {
-      const imgSrc = card.querySelector('img').src;
-      const description = card.getAttribute('data-description');
+    const imgSrc = card.querySelector('img').src;
+    const description = card.getAttribute('data-description');
 
-      // Atualiza o conteúdo do modal
-      modalImg.src = imgSrc;
-      modalDescription.innerHTML = description;
+    modalImg.src = imgSrc;
+    modalDescription.innerHTML = description;
 
-      // Limpa o conteúdo anterior do modal
-      cardActions.innerHTML = "";
+    cardActions.innerHTML = "";
+    const actions = card.querySelector('.card-actions');
+    if (actions) {
+      const clonedActions = actions.cloneNode(true);
+      clonedActions.style.display = "flex";
+      cardActions.appendChild(clonedActions);
+    }
 
-      // Clona o card-actions escondido do card clicado
-      const actions = card.querySelector('.card-actions');
-      if (actions) {
-          const clonedActions = actions.cloneNode(true); // Faz uma cópia completa
-          clonedActions.style.display = "flex"; // Garante que fique visível no modal
-          cardActions.appendChild(clonedActions);
-      }
-
-      // Mostra o modal
-      modal.style.display = 'flex';
+    modal.classList.add('active');
+    modalContent.classList.add('show');
   });
 });
 
-// Fecha o modal ao clicar no botão de fechar
-closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
+function closeModal() {
+  modalContent.classList.remove('show');
+  modal.classList.remove('active');
+}
+
+closeBtn.addEventListener('click', closeModal);
+
+window.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    closeModal();
+  }
 });
 
-// (opcional) Fecha o modal ao clicar fora do conteúdo
-window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.style.display = 'none';
-    }
-});
