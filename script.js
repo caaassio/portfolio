@@ -33,7 +33,7 @@ digitar(texto, () => {
 
 });
 
-// ---------------------- efeito typing para mobile -----------
+// ------------------efeito typing para mobile -----------
 
 const lines = document.querySelectorAll('.css-typing h4');
 
@@ -132,3 +132,57 @@ window.addEventListener('click', (e) => {
   }
 });
 
+// ---------------- intersection observer
+// Fallback para animação reveal
+document.addEventListener('DOMContentLoaded', () => {
+  const reveals = document.querySelectorAll('.reveal');
+  let lastScrollTop = 0;
+
+  // Escolhe o threshold baseado no tamanho da tela
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const thresholdValue = isMobile ? 0.1 : 0.5;
+
+  const observer = new IntersectionObserver((entries) => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollingDown = scrollTop > lastScrollTop;
+
+      entries.forEach(entry => {
+          const index = Array.from(reveals).indexOf(entry.target);
+          const isLastSection = index === reveals.length - 1;
+
+          if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              if (!scrollingDown && !isLastSection) {
+                  reveals.forEach((reveal, i) => {
+                      if (i > index) {
+                          reveal.classList.remove('visible');
+                      }
+                  });
+              }
+          }
+      });
+
+      lastScrollTop = scrollTop;
+  }, {
+      threshold: isMobile ? 0.1 : 0.5,
+      rootMargin: isMobile ? '0px' : '-50px 0px'
+  });
+
+  reveals.forEach(reveal => observer.observe(reveal));
+
+  // Interceptar cliques em links internos
+  const internalLinks = document.querySelectorAll('a[href^="#"]');
+  internalLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+          e.preventDefault(); // Impede o comportamento padrão
+          const targetId = link.getAttribute('href').substring(1); // Remove o '#'
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+              targetElement.scrollIntoView({
+                  behavior: 'smooth', // Mantém scroll suave
+                  block: 'start' // Alinha o topo da seção com o topo da viewport
+              });
+          }
+      });
+  });
+});
