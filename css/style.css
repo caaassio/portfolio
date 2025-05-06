@@ -41,6 +41,7 @@ html, body{
         animation-range: entry 0% cover 50%;
         transition: none; /* Evita conflitos */
     }
+
 }
 
 :root{
@@ -1120,11 +1121,15 @@ header ul li a {
         padding: 20px;
         flex-wrap: wrap;
         box-sizing: border-box;
-        gap: 35px;
+        gap: 25px;
     }
 
     .card{
-        height: 270px;
+        height: 240px;
+    }
+
+    .card p{
+        margin: 0;
     }
 
     #prev-btn {
@@ -1158,15 +1163,14 @@ header ul li a {
     }
 
     .reveal {
-        /* Removido border: 1px solid lime para produção */
-        transition: opacity 0.4s ease-in-out, scale 0.4s ease-in-out; /* Transição mais rápida no mobile */
+        transition: opacity 0.5s ease-in-out, scale 0.5s ease-in-out; /* Mais gradual */
     }
 
     @supports (animation-timeline: view()) {
         .reveal {
-            animation: appear 0.4s ease-in-out; /* Duração menor e curva suave */
+            animation: appear 0.5s ease-in-out;
             animation-timeline: view();
-            animation-range: entry 0% cover 20%; /* Ajustado para 20% para disparo precoce */
+            animation-range: entry 0% cover 20%; /* Aumentado para suavizar reversão */
             transition: none;
         }
     }

@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Escolhe o threshold baseado no tamanho da tela
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  const thresholdValue = isMobile ? 0.1 : 0.5;
+  const thresholdValue = isMobile ? 0.2 : 0.5; // 20% no mobile, 50% no desktop
 
   const observer = new IntersectionObserver((entries) => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -151,21 +151,19 @@ document.addEventListener('DOMContentLoaded', () => {
           const isLastSection = index === reveals.length - 1;
 
           if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              if (!scrollingDown && !isLastSection) {
-                  reveals.forEach((reveal, i) => {
-                      if (i > index) {
-                          reveal.classList.remove('visible');
-                      }
-                  });
+              entry.target.classList.add('visible'); // Anima ao entrar
+          } else if (!scrollingDown && !entry.isIntersecting) {
+              // Reverte apenas ao subir, se o elemento saiu da viewport
+              if (!isLastSection) {
+                  entry.target.classList.remove('visible');
               }
           }
       });
 
       lastScrollTop = scrollTop;
   }, {
-      threshold: isMobile ? 0.1 : 0.5,
-      rootMargin: isMobile ? '0px' : '-50px 0px'
+      threshold: isMobile ? 0.2 : 0.5,
+      rootMargin: isMobile ? '-20% 0px' : '-50px 0px' // Atrasar reversão no mobile
   });
 
   reveals.forEach(reveal => observer.observe(reveal));
@@ -174,13 +172,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const internalLinks = document.querySelectorAll('a[href^="#"]');
   internalLinks.forEach(link => {
       link.addEventListener('click', (e) => {
-          e.preventDefault(); // Impede o comportamento padrão
-          const targetId = link.getAttribute('href').substring(1); // Remove o '#'
+          e.preventDefault();
+          const targetId = link.getAttribute('href').substring(1);
           const targetElement = document.getElementById(targetId);
           if (targetElement) {
               targetElement.scrollIntoView({
-                  behavior: 'smooth', // Mantém scroll suave
-                  block: 'start' // Alinha o topo da seção com o topo da viewport
+                  behavior: 'smooth',
+                  block: 'start'
               });
           }
       });
