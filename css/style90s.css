@@ -73,7 +73,6 @@ ul.menu li {
     padding-left: 25px;
 }
 
-/* bolinhas do menu */
 ul.menu li::before { 
     content: "";
     position: absolute;
@@ -161,7 +160,6 @@ ul.menu li::before {
     text-shadow:
     2px 2px 5px #000,   
    -1px -1px 3px #ffffff;  
-   
 }
 
 .img-foto{
@@ -171,7 +169,6 @@ ul.menu li::before {
     width: auto;
     position: absolute;
     left: 800px;
-    
 }
 
 .conteudo-texto{
@@ -213,6 +210,11 @@ ul.menu li::before {
     color: #3cff00;
 }
 
+.form label{
+    display: block;
+    padding: 5px;
+}
+
 .form-group{
     padding: 8px;
 }
@@ -226,8 +228,8 @@ input, textarea{
     width: 100px;
     border-radius: 0;
     background-color: rgb(175, 175, 175);
-    outline: 2px dotted #5c5c5c; /* borda pontilhada */
-    outline-offset: -6px; /* empurra a borda pra dentro */
+    outline: 2px dotted #5c5c5c; 
+    outline-offset: -6px; 
 }
 
 .popup {
@@ -244,8 +246,8 @@ input, textarea{
 }
   
 .popup-content {
-    outline: 2px dotted #5c5c5c; /* borda pontilhada */
-    outline-offset: -8px; /* empurra a borda pra dentro */
+    outline: 2px dotted #5c5c5c;
+    outline-offset: -8px; 
     background-color: rgb(175, 175, 175);
     color: #000000;
     padding: 30px;
@@ -326,3 +328,4 @@ button.btn-popup:hover{
 .awesome-page .slider {
     background: linear-gradient(to right, #3cff00, #0400ff, #51ff00);
 }
+

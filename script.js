@@ -63,7 +63,7 @@ rocketButton.addEventListener('click', () => {
 });
 
 
-// ------------------ pop formulario --------------------------------
+// ------------------------ pop formulario ----------------------------
 document.getElementById("meuFormulario").addEventListener("submit", function (e) {
     e.preventDefault(); // impede envio padrão
 
@@ -88,7 +88,7 @@ document.getElementById("meuFormulario").addEventListener("submit", function (e)
   }
 
 
-// --------------- Modal --------------------------------------
+// ----------------------------- Modal --------------------------------------
 const modal = document.getElementById('modal');
 const modalImg = document.getElementById('modal-img');
 const modalDescription = document.getElementById('modal-description');
@@ -130,57 +130,4 @@ window.addEventListener('click', (e) => {
   if (e.target === modal) {
     closeModal();
   }
-});
-
-// ---------------- intersection observer
-// Fallback para animação reveal
-document.addEventListener('DOMContentLoaded', () => {
-  const reveals = document.querySelectorAll('.reveal');
-  let lastScrollTop = 0;
-
-  // Escolhe o threshold baseado no tamanho da tela
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  const thresholdValue = isMobile ? 0.2 : 0.5; // 20% no mobile, 50% no desktop
-
-  const observer = new IntersectionObserver((entries) => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const scrollingDown = scrollTop > lastScrollTop;
-
-      entries.forEach(entry => {
-          const index = Array.from(reveals).indexOf(entry.target);
-          const isLastSection = index === reveals.length - 1;
-
-          if (entry.isIntersecting) {
-              entry.target.classList.add('visible'); // Anima ao entrar
-          } else if (!scrollingDown && !entry.isIntersecting) {
-              // Reverte apenas ao subir, se o elemento saiu da viewport
-              if (!isLastSection) {
-                  entry.target.classList.remove('visible');
-              }
-          }
-      });
-
-      lastScrollTop = scrollTop;
-  }, {
-      threshold: isMobile ? 0.2 : 0.5,
-      rootMargin: isMobile ? '-20% 0px' : '-50px 0px' // Atrasar reversão no mobile
-  });
-
-  reveals.forEach(reveal => observer.observe(reveal));
-
-  // Interceptar cliques em links internos
-  const internalLinks = document.querySelectorAll('a[href^="#"]');
-  internalLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const targetId = link.getAttribute('href').substring(1);
-          const targetElement = document.getElementById(targetId);
-          if (targetElement) {
-              targetElement.scrollIntoView({
-                  behavior: 'smooth',
-                  block: 'start'
-              });
-          }
-      });
-  });
 });

@@ -8,41 +8,27 @@ html, body{
     scroll-behavior: smooth;
 }
 
+.reveal{
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 20%;
+  }
+
 @keyframes appear{
     from{
         opacity: 0;
-        scale: 0.3;
+        scale: 0.5;
+        /* transform: translateX(-100px); */
+        /* clip-path: inset(0 100% 100% 0); */
     }
+
     to{
         opacity: 1;
         scale: 1;
+        /* transform: translateX(0px); */
+        /* clip-path: inset(0 0 0 0); */
     }
-}
-
-
-/* Estilo padrão para .reveal (fallback) */
-.reveal {
-    opacity: 0;
-    scale: 0.3;
-    transition: opacity 0.5s ease-in-out, scale 0.5s ease-in-out; /* Transição suave */
-}
-
-/* Estado visível para o fallback */
-.reveal.visible {
-    opacity: 1;
-    scale: 1;
-}
-
-/* Animação com animation-timeline para navegadores compatíveis */
-@supports (animation-timeline: view()) {
-    .reveal {
-        animation: appear 0.5s ease-in-out; /* Curva mais suave */
-        animation-timeline: view();
-        animation-range: entry 0% cover 50%;
-        transition: none; /* Evita conflitos */
-    }
-
-}
+  }
 
 :root{
     --cor-base: #151515;
@@ -146,10 +132,6 @@ html, body{
      display: none;
 }
 
-section[id] {
-    scroll-margin-top: 16em; /* Compensa a altura do header (6em) */
-}
- 
 header {
     display: flex;
     height: 6em;
@@ -180,19 +162,19 @@ header ul li a {
     border-radius: 14px;
 }
  
- header #escrito {
-     height: 60px;
-     box-sizing: border-box;
- }
+header #escrito {
+    height: 60px;
+    box-sizing: border-box;
+}
+
+header a:link,
+header a:visited {
+    color: white;
+    box-sizing: border-box;
+    padding: 15px;
+}
  
- header a:link,
- header a:visited {
-     color: white;
-     box-sizing: border-box;
-     padding: 15px;
- }
- 
- header a:hover {
+header a:hover {
     border: 3px solid transparent;
     border-radius: 15px;
     background: 
@@ -200,12 +182,20 @@ header ul li a {
     var(--gradiente) border-box; 
     transition: background-color 0.3s ease, color 0.3s ease-in-out;
     box-sizing: border-box;
- }
+}
  
- header a:active {
+header a:active {
     color: rgb(136, 255, 0);
     box-sizing: border-box;
- }
+}
+
+.index-page .slider {
+    background: linear-gradient(to right, #02c0fa, #ff41df) border-box;
+}
+
+.index-page .slider:before {
+    background-color: var(--cor-base);
+}
 
 #home{
     display: flex;
@@ -430,20 +420,6 @@ header ul li a {
     width: 100%;
 }
 
-/* .modal {
-    display: none; 
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6); 
-    backdrop-filter: blur(20px); 
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-} */
-
 .modal {
     opacity: 0; 
     pointer-events: none;
@@ -517,9 +493,7 @@ header ul li a {
     flex-direction: column;
     display: flex;
     box-sizing: border-box;
-    
     position: relative;
-
     opacity: 0;
     transform: scale(0.2);
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -564,32 +538,6 @@ header ul li a {
     font-size: 34px;
     cursor: pointer;
 }
-
-.nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0);
-    border: none;
-    color: rgb(189, 189, 189);
-    font-size: 4rem;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 20;
-    transition: background 0.3s;
-}
-  
-#prev-btn {
-    left: 10px;
-}
-  
-#next-btn {
-    right: 10px;
-}
-  
-.nav-btn:hover {
-    color: rgb(255, 255, 255);
-}  
   
 #contato{
     width: 99%;
@@ -820,15 +768,6 @@ header ul li a {
     transition: all 0.3s ease;
 }
 
-
-.index-page .slider {
-    background: linear-gradient(to right, #02c0fa, #ff41df) border-box;
-}
-
-.index-page .slider:before {
-    background-color: var(--cor-base);
-}
-
 .footer{
     height: 70px;
     display: flex;
@@ -838,7 +777,7 @@ header ul li a {
     position: relative; 
 }
  
-    @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
  
     #menu-btn {
         background: none;
@@ -897,7 +836,7 @@ header ul li a {
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
-        gap: 50px;
+        gap: 35px;
     }
  
     header ul li {
@@ -914,14 +853,6 @@ header ul li a {
         z-index: 12;
         opacity: 1;
         visibility: visible;
-    }
-
-    .index-page .slider {
-        display: block;
-    }
-
-    section[id] {
-        scroll-margin-top: 0; /* Compensa a altura do header (6em) */
     }
 
     #container{
@@ -1160,19 +1091,6 @@ header ul li a {
     #contato .section-title{
         font-size: 2em;
         padding: 25px;
-    }
-
-    .reveal {
-        transition: opacity 0.5s ease-in-out, scale 0.5s ease-in-out; /* Mais gradual */
-    }
-
-    @supports (animation-timeline: view()) {
-        .reveal {
-            animation: appear 0.5s ease-in-out;
-            animation-timeline: view();
-            animation-range: entry 0% cover 20%; /* Aumentado para suavizar reversão */
-            transition: none;
-        }
     }
 
     /* Garantir que elementos não fiquem escondidos por overflow */

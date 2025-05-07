@@ -17,6 +17,3 @@ window.addEventListener("DOMContentLoaded", () => {
       checkbox.checked = true;
     }
   });
-
-// ------------  transição entre páginas ---------------------
-
