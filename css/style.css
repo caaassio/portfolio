@@ -977,8 +977,12 @@ header a:active {
         width: 100%;
     }
 }
- 
-@media (max-width: 767px) and (min-width: 576px){
+
+@media (max-width: 767px) and (min-width: 577px){
+
+}
+
+@media (max-width: 576px) {
  
     #menu-btn {
         background: none;
