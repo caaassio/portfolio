@@ -71,19 +71,22 @@ document.getElementById("meuFormulario").addEventListener("submit", function (e)
 
   fetch(form.action, {
     method: form.method,
+    headers: {
+      'Accept': 'application/json' // evita redirecionamento e recebe JSON da Formspree
+    },
     body: new FormData(form),
   })
   .then(response => {
     if (response.ok) {
-      // Exibe o popup de agradecimento
       document.getElementById("popupObrigado").style.display = "flex";
-      form.reset(); // Limpa o formulário
+      form.reset(); // limpa o formulário
     } else {
       alert("Algo deu errado. Tente novamente.");
     }
   })
   .catch(error => {
-    alert("Erro de rede. Tente novamente.");
+    console.error("Erro:", error);
+    alert("Ocorreu um erro ao enviar o formulário.");
   });
 });
 
