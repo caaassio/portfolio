@@ -65,27 +65,32 @@ rocketButton.addEventListener('click', () => {
 
 // ------------------------ pop formulario ----------------------------
 document.getElementById("meuFormulario").addEventListener("submit", function (e) {
-    e.preventDefault(); // impede envio padrão
+  e.preventDefault(); // impede envio padrão
 
-    const form = e.target;
+  const form = e.target;
 
-    fetch(form.action, {
-      method: form.method,
-      body: new FormData(form),
-    })
-    .then(response => {
-      if (response.ok) {
-        document.getElementById("popupObrigado").style.display = "flex";
-        form.reset(); // limpa o formulário
-      } else {
-        alert("Algo deu errado. Tente novamente.");
-      }
-    });
+  fetch(form.action, {
+    method: form.method,
+    body: new FormData(form),
+  })
+  .then(response => {
+    if (response.ok) {
+      // Exibe o popup de agradecimento
+      document.getElementById("popupObrigado").style.display = "flex";
+      form.reset(); // Limpa o formulário
+    } else {
+      alert("Algo deu errado. Tente novamente.");
+    }
+  })
+  .catch(error => {
+    alert("Erro de rede. Tente novamente.");
   });
+});
 
-  function fecharPopup() {
-    document.getElementById("popupObrigado").style.display = "none";
-  }
+function fecharPopup() {
+  document.getElementById("popupObrigado").style.display = "none";
+}
+
 
 
 // ----------------------------- Modal --------------------------------------

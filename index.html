@@ -116,7 +116,7 @@
             <div class="group-card">
 
                 <div class="card reveal" data-description="<h1>Psicóloga Ana Carolline</h1>
-                <br><br>
+                <br>
                 Este site foi desenvolvido para a psicóloga Ana Carolline com o objetivo de apresentar sua abordagem clínica e facilitar o agendamento de atendimentos online. <br><br> Construído em HTML, CSS e JavaScript, o layout prioriza uma navegação simples e acolhedora, refletindo a empatia e profissionalismo da Ana.<br><br> O design responsivo garante uma boa experiência em qualquer dispositivo, e o conteúdo foi organizado para destacar sua formação, serviços oferecidos, depoimentos e um blog com temas da área da saúde mental.<br><br> Todo o projeto foi pensado para fortalecer a presença digital da profissional e gerar mais confiança nos pacientes desde o primeiro contato.">
                     <picture>
                         <img src="./components/img/tela-desk.jpg">
@@ -218,7 +218,7 @@
 
                         <ul>
                             <li><a href="https://www.linkedin.com/in/cassio-rodrigues-oliveira/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin linkedin"></i></a></li>
-                            <li><a href="https://github.com/caaassio target="_blank" rel="noopener noreferrer""><i class="fa-brands fa-square-github github"></i></a></li>
+                            <li><a href="https://github.com/caaassio" target="_blank" rel="noopener noreferrer""><i class="fa-brands fa-square-github github"></i></a></li>
                             <li><a href="https://www.instagram.com/caaassio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-square-instagram instagram"></i></a></li>
                             <li><a href="https://www.facebook.com/caaassio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-square-facebook facebook"></i></i></a></li>
 
@@ -229,36 +229,39 @@
                 </div>
 
                 <div class="form reveal">
-                <form id="meuFormulario" action="https://formsubmit.co/caaassio@gmail.com" method="POST">
-
-                    <h2>Formulário de contato</h2>
-                    <div class="form-content">
-
-                        <div class="form-group">
-                            <label for="nome">Nome</label>
-                            <input type="text" name="nome" id="nome" required>
+                    <form id="meuFormulario" action="https://formspree.io/f/mwpobqnz" method="POST">
+                        <h2>Formulário de contato</h2>
+                        <div class="form-content">
+                
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input type="text" name="nome" id="nome" required>
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" name="email" id="email" required>
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="mensagem">Mensagem</label>
+                                <textarea name="mensagem" id="mensagem" rows="10" required></textarea>
+                            </div>
+                
+                            <input type="text" name="_honey" style="display:none">
+                
+                            <input type="hidden" name="_redirect" value="https://seusite.com/obrigado.html">
+                
+                            <input type="hidden" name="_captcha" value="false">
+                
+                            <input type="hidden" name="_replyto" value="caaassio@gmail.com">
+                
+                            <button type="submit">Enviar</button>
                         </div>
-
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" name="email" id="email" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="mensagem">Mensagem</label>
-                            <textarea name="mensagem" id="mensagem" rows="10" required></textarea>
-                        </div>
-
-                        <input type="text" name="_honey" style="display:none">
-
-                        <input type="hidden" name="_redirect" value="false">
-
-                        <input type="hidden" name="_captcha" value="false">
-
-                        <button type="submit">Enviar</button>
-                    </div>
-                </form>
+                    </form>
                 </div>
+                
+                
 
             </div>
 
@@ -272,10 +275,10 @@
         </p>
     </footer>
 
-    <div id="popupObrigado" class="popup">
+    <div id="popupObrigado" class="popup" style="display: none;">
         <div class="popup-content">
-          <p>Obrigado pelo contato! <i class="fa-solid fa-thumbs-up"></i></p>
-          <button class="btn-popup" onclick="fecharPopup()">Fechar</button>
+            <p>Obrigado pelo contato! <i class="fa-solid fa-thumbs-up"></i></p>
+            <button class="btn-popup" onclick="fecharPopup()">Fechar</button>
         </div>
     </div>
 

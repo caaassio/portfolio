@@ -53,3 +53,13 @@ input:checked + .slider {
 input:checked + .slider:before {
     transform: translateX(26px);
 }
+
+@media screen and (max-width: 992px) {
+    
+    .switch {
+        top: 38px;
+        left: 30%;
+        transform: translateX(-30%);
+    }
+      
+}

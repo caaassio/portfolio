@@ -64,7 +64,7 @@ html, body{
 
  #container{
     margin: 0;
-    padding: 0 100px;
+    padding: 0 5%;
     box-sizing: border-box;
  }
 
@@ -203,6 +203,7 @@ header a:active {
     max-width: 100vw;
     height: 76vh;
     box-sizing: border-box;
+
 }
 
 .scroll-msg {
@@ -513,12 +514,13 @@ header a:active {
 }
 
 .modal-content img {
-    height: 60%;
+    width: 50%;
     margin: 10px;
 }
 
 .modal-description{
     padding: 20px;
+    width: 50%;
 }
 
 .card-actions{
@@ -776,8 +778,207 @@ header a:active {
     box-sizing: border-box;
     position: relative; 
 }
+
+@media (max-width: 1440px) and (min-width: 1200px){
+    
+    #typewriter{
+        font-size: 24px;
+    }
+
+    .btn-home{
+        font-size: 22px;
+        padding: 18px 20px;
+   }
+
+    #about h1, #portfolio h1, #contato h1{
+        font-size: 54px !important;
+    }
+    
+    .about-content{
+        gap: 22px;
+        padding: 0 30px !important;
+    }
+
+    .about-content p{
+        margin: 0;
+        padding: 20px !important;
+        font-size: 17px !important;
+    }
+
+    #about{
+        padding: 0 !important;
+    }
+
+    #about img {
+        width: 45%;
+        max-width: 90%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .card{
+        width: 350px;
+        height: 272px;
+    }
+
+    .wrapper-contato{
+        width: 99%;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+    }
+
+    .modal-description{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 992px){
+
+    #typewriter{
+        font-size: 22px;
+    }
+
+    h1{
+        font-size: 50px !important;
+    }
+
+    .btn-home{
+        font-size: 20px;
+        padding: 15px 20px;
+        margin-top: 60px;
+    }
+
+    .img-home img{
+        width: 500px;
+        opacity: 0;
+        max-width: 100%;
+    }
+
+    section#about{
+        padding: 0 !important;
+    }
+
+    .about-content{
+        gap: 20px;
+        padding: 0 30px;
+    }
+
+    .about-content p{
+        margin: 0;
+        padding: 20px !important;
+        font-size: 17px !important;
+    }
+
+    .modal-body{
+        gap: 13px;
+    }
+
+    .modal-description{
+        font-size: 16px;
+        padding: 15px;
+    }
+
+    .modal-description h1{
+        font-size: 32px !important;
+        margin: 15px 0 !important;
+    }
+
+    #about img {
+        width: 400px;
+        max-width: 90%;
+        padding: 0;
+        margin: 0;
+        display: block;
+        object-fit: contain;
+    }
+
+    .wrapper-contato{
+        width: 99%;
+    }
+
+    section#contato{
+        box-sizing: border-box;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 450px;
+    }
+}
+
+@media (max-width: 992px) and (min-width: 768px){
+
+    .txt-home{
+        font-size: 22px;
+    }
+
+    .btn-home{
+        font-size: 20px;
+        padding: 18px 22px;
+        margin-top: 60px;
+    }
+
+    h1.section-title{
+        font-size: 45px !important;
+    }
+
+    #about .section-title{
+        width: 250px;
+    }
+
+    #about{
+        gap: 15px !important;
+    }
+
+    #about img {
+        width: 45%;
+        max-width: 90%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .about-content{
+        gap: 15px;
+        padding: 0 40px !important;
+    }
+
+    .about-content p{
+        font-size: 16px;
+        margin: 0;
+        padding: 10px !important;
+    }
+
+    #portfolio .section-title{
+        width: 205px;
+    }
+
+    .modal-description{
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .card-actions{
+        margin: 0 !important;
+    }
+
+    .wrapper-contato{
+        width: 99%;
+    }
+
+    section#contato{
+        box-sizing: border-box;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+    }
+}
  
-@media screen and (max-width: 768px) {
+@media (max-width: 767px) and (min-width: 576px){
  
     #menu-btn {
         background: none;
