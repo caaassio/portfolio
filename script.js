@@ -103,7 +103,6 @@ const modalDescription = document.getElementById('modal-description');
 const closeBtn = document.querySelector('.close-btn');
 const cardActions = document.getElementById('card-actions');
 const modalContent = modal.querySelector('.modal-content');
-
 const cards = document.querySelectorAll('.card');
 
 cards.forEach(card => {
