@@ -1311,7 +1311,7 @@ header a:active {
     .modal-content{
         display: flex;
         flex-direction: column;
-        height: 95vh;
+        height: 86vh;
         padding: 13px;
     }
 
