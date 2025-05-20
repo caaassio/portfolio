@@ -9,8 +9,16 @@ document.addEventListener("DOMContentLoaded", function () {
             menu.classList.toggle("show");
         });
     }
-});
 
+    // Recolher menu ao clicar em um link
+    const links = menu.querySelectorAll("a");
+    links.forEach(link => {
+      link.addEventListener("click", () => {
+        menu.classList.remove("show");
+    
+    });
+});
+});
 
 // ----------------- efeito typing --------------------------------
 

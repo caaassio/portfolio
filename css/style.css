@@ -1006,6 +1006,11 @@ header a:active {
 }
 
 @media (max-width: 576px) {
+
+    html, body{
+        overflow-x: hidden;
+        box-sizing: border-box;
+    }
  
     #menu-btn {
         background: none;
@@ -1066,8 +1071,9 @@ header a:active {
         transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
         gap: 35px;
     }
- 
+    
     header ul li {
+        top: -60px;
         text-align: center;
         margin: 15px 0;
         padding: 15px;
@@ -1311,8 +1317,16 @@ header a:active {
     .modal-content{
         display: flex;
         flex-direction: column;
-        height: 86vh;
+        margin-left: auto;
+        margin-right: auto;
+        height: 90vh;
+        width: 95vw;
         padding: 13px;
+    }
+
+    .close-btn{
+        top: -5px !important;
+        right: 10px !important;
     }
 
     .modal-body{
@@ -1336,13 +1350,10 @@ header a:active {
         width: 70% !important;
     }
 
-
     .modal-description h1{
         margin: 0 !important;
         font-size: 20px !important;
     }
-
-
 
     #contato{
         width: 100vw;
