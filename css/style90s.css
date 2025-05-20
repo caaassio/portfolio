@@ -11,10 +11,11 @@ a{
 #container{
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    height: 100vh;
+    width: 1920px;
+    height: 925px;
     background-image: url(../components/img/bg.jpg);
     z-index: 0; 
+    overflow: hidden;
 }
 
 .foto{
@@ -117,22 +118,30 @@ ul.menu li::before {
 }
 
 .selos {
-    margin-left: 320px;
+    margin-left: 270px;
     position: absolute;
-    bottom: 100px;
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    width: 1150px; 
+    top: 700px;
+    display: block;
+    gap: 50px; 
+    width: 1250px; 
     z-index: 10;
 }
 
+.selos img{
+    padding-left: 150px  !important;
+}
+
 .rodape{
-    display: flex;
+    display: block;
     color: #3cff00;
     position: absolute;
     left: 850px;
-    bottom: 0;
+    top: 860px;
+    width: 251px;
+}
+
+.rodape p{
+    flex-wrap: nowrap;
 }
 
 .cubo{
@@ -254,6 +263,9 @@ input, textarea{
     font-size: 24px;
     font-family: 'Comic Sans MS', cursive, sans-serif;
     text-align: center;
+    width: 320px;
+    height: 250px;
+    box-sizing: border-box;
 }
 
 .btn-popup{

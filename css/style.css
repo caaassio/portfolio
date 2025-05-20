@@ -319,6 +319,7 @@ header a:active {
     display: flex;
     flex-direction: column;
     padding: 40px 0;
+    text-align: justify;
 }
     
 #about .section-title {
@@ -794,7 +795,7 @@ header a:active {
 }
 
 .footer{
-    height: 70px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1246,7 +1247,8 @@ header a:active {
     }
 
     #about .section-title {
-        font-size: 2em;
+        font-size: 2em !important;
+        width: 200px;
     }
 
     .about-content {
@@ -1278,6 +1280,7 @@ header a:active {
     #portfolio .section-title {
         font-size: 2em;
         padding: 25px;
+        width: 140px;
     }
 
     .group-card{
@@ -1375,6 +1378,7 @@ header a:active {
     #contato .section-title{
         font-size: 2em;
         padding: 25px;
+        width: 130px;
     }
 
     #container, #home, #about, #portfolio, #contato {
