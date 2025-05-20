@@ -102,7 +102,7 @@ ul.menu li::before {
     display: flex;
     position: absolute;
     color: rgb(3, 255, 3);
-    bottom: 210px;
+    top: 820px;
     left: 190px;
     z-index: 5;
 }
@@ -112,7 +112,7 @@ ul.menu li::before {
     display: flex;
     position: absolute;
     color: rgb(3, 255, 3);
-    bottom: 210px;
+    top: 820px;
     left: 1400px;
     z-index: 5;
 }
@@ -135,9 +135,9 @@ ul.menu li::before {
     display: block;
     color: #3cff00;
     position: absolute;
-    left: 850px;
+    left: 830px;
     top: 860px;
-    width: 251px;
+    width: 260px;
 }
 
 .rodape p{
@@ -197,7 +197,7 @@ ul.menu li::before {
 .btn-voltar{
     display: flex;
     position: absolute;
-    bottom: 70px;
+    top: 830px;
     left: 50px;
 }
 
