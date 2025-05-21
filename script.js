@@ -128,12 +128,14 @@ cards.forEach(card => {
 
     modal.classList.add('active');
     modalContent.classList.add('show');
+    document.body.classList.add('modal-aberto'); // ⬅️ Bloqueia rolagem
   });
 });
 
 function closeModal() {
   modalContent.classList.remove('show');
   modal.classList.remove('active');
+  document.body.classList.remove('modal-aberto'); // ⬅️ Libera rolagem
 }
 
 closeBtn.addEventListener('click', closeModal);
@@ -143,6 +145,7 @@ window.addEventListener('click', (e) => {
     closeModal();
   }
 });
+
 
 // -------------------- animação botão enviar para mobile ----------------
 const botao = document.querySelector('.form button');
