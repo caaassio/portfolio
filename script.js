@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Recolher menu ao clicar em um link
     const links = menu.querySelectorAll("a");
     links.forEach(link => {
       link.addEventListener("click", () => {
@@ -73,21 +72,21 @@ rocketButton.addEventListener('click', () => {
 
 // ------------------------ pop formulario ----------------------------
 document.getElementById("meuFormulario").addEventListener("submit", function (e) {
-  e.preventDefault(); // impede envio padrão
+  e.preventDefault(); 
 
   const form = e.target;
 
   fetch(form.action, {
     method: form.method,
     headers: {
-      'Accept': 'application/json' // evita redirecionamento e recebe JSON da Formspree
+      'Accept': 'application/json' 
     },
     body: new FormData(form),
   })
   .then(response => {
     if (response.ok) {
       document.getElementById("popupObrigado").style.display = "flex";
-      form.reset(); // limpa o formulário
+      form.reset(); 
     } else {
       alert("Algo deu errado. Tente novamente.");
     }
@@ -100,9 +99,7 @@ document.getElementById("meuFormulario").addEventListener("submit", function (e)
 
 function fecharPopup() {
   document.getElementById("popupObrigado").style.display = "none";
-}
-
-
+};
 
 // ----------------------------- Modal --------------------------------------
 const modal = document.getElementById('modal');
@@ -146,3 +143,22 @@ window.addEventListener('click', (e) => {
     closeModal();
   }
 });
+
+// -------------------- animação botão enviar para mobile ----------------
+const botao = document.querySelector('.form button');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      botao.classList.add('entrando');
+      botao.classList.remove('saindo');
+    } else {
+      botao.classList.remove('entrando');
+      botao.classList.add('saindo');
+    }
+  });
+}, {
+  threshold: 0.3 // sensibilidade (ajuste se quiser que ative mais cedo ou mais tarde)
+});
+
+observer.observe(botao);
