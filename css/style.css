@@ -1,8 +1,8 @@
 html, body{
     margin: 0;
     padding: 0;
-    background-color: #151515;
-    color: rgb(228, 228, 228);
+    background-color: var(--cor-base);
+    color:  var(--cor-texto);
     font-size: 18px;
     font-family: "Open Sans", sans-serif;
     scroll-behavior: smooth;
@@ -28,31 +28,48 @@ html, body{
 
 :root{
     --cor-base: #151515;
+    --cor-texto: rgb(231, 231, 231);
+    --texto-hover: rgb(172, 172, 172);
+    --cor-card: #252525;
+    --btn-hover: rgb(190, 190, 190);
     --gradiente: linear-gradient(to right, #ff41df, #02c0fa);
- }
- 
- #logo img {
-     display: block;
-     float: left;
-     height: 65px;
-     margin-top: 5px;
-     filter: invert(70%);
-     margin-left: 30px;
-     border: 1px solid transparent;
- }
+ } 
 
- #logo img:hover{
-    filter: invert(100%);
+.light{
+    --cor-base: #ffffff;
+    --cor-texto: rgb(27, 27, 27);
+    --texto-hover: rgb(128, 128, 128);
+    --btn-hover: rgb(148, 148, 148);
+    --cor-card: #e2e2e2;
  }
  
- .link-logo:hover{
-     box-sizing: border-box;
-     border: none !important;
-     border-radius: 0;
-     background: 
-     linear-gradient(var(--cor-base), var(--cor-base)) padding-box, 
-     linear-gradient(to right, #ff41df, #02c0fa) border-box; 
- }
+#logo img {
+    display: block;
+    float: left;
+    height: 65px;
+    margin-top: 5px;
+    filter: invert(70%);
+    margin-left: 30px;
+    border: 1px solid transparent;
+    transition: filter 0.3s ease;
+}
+
+#logo img:hover{
+    filter: invert(100%);
+}
+
+body.light #logo img {
+    filter: none;
+}
+ 
+.link-logo:hover{
+    box-sizing: border-box;
+    border: none !important;
+    border-radius: 0;
+    background: 
+    linear-gradient(var(--cor-base), var(--cor-base)) padding-box, 
+    var(--gradiente) border-box; 
+}
 
  a{
     text-decoration: none;
@@ -88,11 +105,13 @@ html, body{
 .btt .rocket{
     transform: rotate(-45deg);
     font-size: 2em;
-    color: rgba(255, 255, 255, 0.2);
+    color: var(--cor-texto);
+    filter: opacity(20%);
 }
 
 .btt:hover .rocket {
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--cor-texto);
+    filter: opacity(50%);
 }
 
 .btt .flame {
@@ -109,7 +128,8 @@ html, body{
 }
 
 .btt.active .rocket{
-    color: rgb(143, 143, 143);
+    color: var(--cor-texto);
+    filter: opacity(20%);
 }
   
 .btt.active .flame {
@@ -132,7 +152,7 @@ html, body{
  
 /* Menu ----------------------------------------------------------------------------*/
 #menu-btn{
-     display: none;
+    display: none;
 }
 
 header {
@@ -140,7 +160,7 @@ header {
     height: 6em;
     align-items: center;
     justify-content: space-between;
-    color: white;
+    color: var(--cor-texto);
     padding: 0 30px;
     box-sizing: border-box;
 }
@@ -149,6 +169,7 @@ header ul {
     display: flex;
     list-style: none;
     box-sizing: border-box;
+    font-weight: 600;
 }
  
 header ul li {
@@ -163,6 +184,7 @@ header ul li a {
     box-sizing: border-box;
     border: 3px solid transparent;
     border-radius: 14px;
+    transition: all 0.2s ease-in-out;
 }
  
 header #escrito {
@@ -172,7 +194,7 @@ header #escrito {
 
 header a:link,
 header a:visited {
-    color: white;
+    color: var(--cor-texto);
     box-sizing: border-box;
     padding: 15px;
 }
@@ -180,11 +202,11 @@ header a:visited {
 header a:hover {
     border: 3px solid transparent;
     border-radius: 15px;
+    color: var(--texto-hover);
     background: 
     linear-gradient(var(--cor-base), var(--cor-base)) padding-box, 
     var(--gradiente) border-box; 
-    transition: background-color 0.3s ease, color 0.3s ease-in-out;
-    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
 }
  
 header a:active {
@@ -193,7 +215,7 @@ header a:active {
 }
 
 .index-page .slider {
-    background: linear-gradient(to right, #02c0fa, #ff41df) border-box;
+    background: var(--gradiente) border-box;
 }
 
 .index-page .slider:before {
@@ -207,22 +229,6 @@ header a:active {
     max-width: 100vw;
     height: 76vh;
     box-sizing: border-box;
-}
-
-.scroll-msg {
-    position: absolute;
-    top: 60%;
-    right: 50px;
-    transform: rotate(90deg);
-    transform-origin: right center;
-    font-size: 18px;
-    font-weight: bold;
-    color: #ccc;
-    letter-spacing: 2px;
-    z-index: 10;
-    pointer-events: none;
-    opacity: 0.5;
-    text-transform: uppercase;
 }
 
 .txt-wrapper{
@@ -252,7 +258,7 @@ header a:active {
     content: "";
     width: 3px;
     height: 1.5rem;
-    background: rgb(255, 255, 255);
+    background:  var(--cor-texto);
     display: inline-block;
     margin-left: 5px;
     animation: blink 0.7s step-end infinite;
@@ -295,9 +301,10 @@ header a:active {
 }
 
 .btn-home{
-    color: white;
+    color:  var(--cor-texto);
     display: flex;
     font-size: 24px;
+    font-weight: 600;
     text-transform: uppercase;
     padding: 20px 30px;
     margin-top: 60px;
@@ -312,12 +319,12 @@ header a:active {
 }
 
 .btn-home:hover{
-    color: #151515;
+    color: var(--cor-base);
     border: 3px solid transparent;
     border-radius: 15px;
     background: 
-    linear-gradient(rgb(190, 190, 190), rgb(190, 190, 190)) padding-box, 
-    linear-gradient(to right, #02c0fa, #ff41df) border-box; 
+    linear-gradient(var(--btn-hover), var(--btn-hover)) padding-box, 
+    var(--gradiente) border-box; 
     transition: all 0.3s ease;
 }
 
@@ -346,7 +353,7 @@ header a:active {
 #about .section-title {
     font-size: 3.5em;
     display: flex;
-    background: linear-gradient(to right, #02c0fa, #ff41df); 
+    background: var(--gradiente); 
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -373,7 +380,7 @@ header a:active {
     padding: 30px;
     flex: 1;
     font-size: 18px;
-    color: whitesmoke;
+    color: var(--cor-texto);
     display: flex;
 }
 
@@ -391,7 +398,7 @@ header a:active {
 #portfolio .section-title{
     font-size: 3.5em;
     display: flex;
-    background: linear-gradient(to right, #02c0fa, #ff41df); 
+    background: var(--gradiente); 
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -412,7 +419,7 @@ header a:active {
 }
 
 .card{
-    background-color: rgb(54, 54, 54);
+    background-color: var(--cor-card);
     width: 450px;
     height: 350px;
     transition: transform 0.3s ease-in-out, opacity 0.5s ease-out;
@@ -460,7 +467,6 @@ header a:active {
     background: rgba(0,0,0,0.6); 
     backdrop-filter: blur(20px); 
     z-index: 1000;
-    
 }
 
 .modal.active{
@@ -477,7 +483,8 @@ header a:active {
 }
 
 .modal-content h1{
-    color: #bbbbbb !important;
+    color: var(--cor-texto) !important;
+    filter: opacity(60%);
 }
 
 .card .card-actions {
@@ -491,30 +498,31 @@ header a:active {
 .card-actions a{
     padding: 14px;
     border-radius: 15px;
-    background-color: #ff41df00;
-    color: white;
+    background-color: #b3139800;
+    color: var(--cor-texto);
+    font-weight: 500;
     font-size: 18px;
     border-radius: 15px;
     border: 3px solid transparent;
     background: 
-    linear-gradient(#202020, #202020) padding-box, 
+    linear-gradient(var(--cor-base), var(--cor-base)) padding-box, 
     var(--gradiente) border-box; 
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .card-actions a:hover{
-    color: #151515;
+    color: var(--cor-card);
     border: 3px solid transparent;
     border-radius: 15px;
     background: 
     linear-gradient(rgb(190, 190, 190), rgb(190, 190, 190)) padding-box, 
-    linear-gradient(to right, #02c0fa, #ff41df) border-box; 
+    var(--gradiente) border-box; 
     transition: all 0.3s ease;
 }
 
 .modal-content {
-    background: #202020;
+    background: var(--cor-card);
     padding: 20px;
     border-radius: 15px;
     width: 90vw;
@@ -589,7 +597,8 @@ header a:active {
 }
 
 .close-btn:hover{
-    color: #8a8a8a;
+    color: var(--cor-texto);
+    filter: opacity(50%);
 }
  
 /* Contato --------------------------------------------------------------------*/
@@ -604,7 +613,7 @@ header a:active {
 #contato .section-title{
     font-size: 3.5em;
     display: flex;
-    background: linear-gradient(to right, #02c0fa, #ff41df); 
+    background: var(--gradiente); 
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -614,13 +623,14 @@ header a:active {
 }
 
 #contato h2{
-    color: rgb(165, 165, 165);
+    color: var(--cor-texto);
+    filter: opacity(60%);
     font-weight: 400;
 }
 
 .email{
     font-size: 18px;
-    color: whitesmoke;
+    color: var(--cor-texto);
     display: inline-flex; 
     align-items: center;
     gap: 10px;
@@ -637,14 +647,15 @@ header a:active {
     border-radius: 15px;
     background: 
     linear-gradient(var(--cor-base), var(--cor-base)) padding-box, 
-    linear-gradient(to right, #ff41df, #02c0fa) border-box; 
+    var(--gradiente) border-box; 
     transition: background-color 0.3s ease, color 0.3s ease-in-out;
     box-sizing: border-box;
 }
 
 .email i{
     font-size: 28px;
-    color: grey;
+    color: var(--cor-texto);
+    filter: opacity(60%);
     padding-right: 15px;
     transition: all 0.3s ease;
 }
@@ -674,7 +685,7 @@ header a:active {
 }
 
 .social-icons i{
-    color: white;
+    color:  var(--cor-texto);
     font-size: 30px;
 }
 
@@ -693,7 +704,7 @@ header a:active {
     border-radius: 15px;
     background: 
     linear-gradient(var(--cor-base), var(--cor-base)) padding-box, 
-    linear-gradient(to right, #ff41df, #02c0fa) border-box; 
+    var(--gradiente) border-box; 
     transition: background-color 0.3s ease, color 0.3s ease-in-out;
     box-sizing: border-box;
 }
@@ -727,7 +738,7 @@ header a:active {
     margin-top: 20px;
     margin-bottom: 10px;
     display: flex;
-    color: white;
+    color: var(--cor-texto);
 }
 
 .form-group input,
@@ -738,7 +749,7 @@ header a:active {
     border-radius: 14px;
     background: none;
     border: 1px solid grey;
-    color: white;
+    color: var(--cor-texto);
     padding-left: 10px;
 }
 
@@ -752,7 +763,8 @@ header a:active {
 
 .form button{
     font-size: 24px;
-    color: white;
+    font-weight: 600;
+    color:  var(--cor-texto);
     padding: 15px 35px;
     border-radius: 14px;
     margin-top: 30px;
@@ -760,7 +772,7 @@ header a:active {
     border-radius: 15px;
     background: 
     linear-gradient(var(--cor-base), var(--cor-base)) padding-box, 
-    linear-gradient(to right, #ff41df, #02c0fa) border-box; 
+    var(--gradiente) border-box; 
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -771,7 +783,7 @@ header a:active {
     border-radius: 15px;
     background: 
     linear-gradient(rgb(190, 190, 190), rgb(190, 190, 190)) padding-box, 
-    linear-gradient(to right, #02c0fa, #ff41df) border-box; 
+    var(--gradiente) border-box; 
     transition: all 0.3s ease;
 }
 
@@ -789,8 +801,8 @@ header a:active {
 }
   
 .popup-content {
-    background: #222;
-    color: #fff;
+    background: var(--cor-card);
+    color:  var(--cor-texto);
     padding: 30px;
     font-size: 24px;
     border-radius: 10px;
@@ -799,7 +811,7 @@ header a:active {
 
 .btn-popup{
     font-size: 24px;
-    color: white;
+    color:  var(--cor-texto);
     padding: 15px 35px;
     border-radius: 14px;
     margin-top: 30px;
@@ -807,7 +819,7 @@ header a:active {
     border-radius: 15px;
     background: 
     linear-gradient(var(--cor-base), var(--cor-base)) padding-box, 
-    linear-gradient(to right, #ff41df, #02c0fa) border-box; 
+    var(--gradiente) border-box; 
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -818,7 +830,7 @@ header a:active {
     border-radius: 15px;
     background: 
     linear-gradient(rgb(190, 190, 190), rgb(190, 190, 190)) padding-box, 
-    linear-gradient(to right, #02c0fa, #ff41df) border-box; 
+    var(--gradiente) border-box; 
     transition: all 0.3s ease;
 }
 
@@ -1037,7 +1049,7 @@ header a:active {
     #menu-btn {
         background: none;
         border: none;
-        color: white;
+        color:  var(--cor-texto);
         font-size: 1.8rem;
         cursor: pointer;
         position: relative; 
@@ -1051,7 +1063,8 @@ header a:active {
     }
 
     #menu-btn:hover {
-        color: #d3d3d3; 
+        color: var(--cor-texto);
+        filter: opacity(60%);
     }
 
     #menu-btn::before {
@@ -1061,7 +1074,7 @@ header a:active {
         left: 50%;
         width: 0;
         height: 0;
-        background-color: rgb(70, 70, 70); 
+        background-color: var(--cor-card); 
         border-radius: 50%;
         transform: translate(-50%, -50%);
         transition: width 0.3s ease, height 0.3s ease;
@@ -1158,7 +1171,7 @@ header a:active {
         margin: 0;
         white-space: nowrap;
         overflow: hidden;
-        color: white;
+        color:  var(--cor-texto);
         width: 0;
         position: relative;
     }
@@ -1167,7 +1180,7 @@ header a:active {
         content: "|";
         position: absolute;
         right: 0;
-        color: rgb(255, 255, 255);
+        color:  var(--cor-texto);
         animation: blink2 0.7s infinite;
         opacity: 1;
     }
