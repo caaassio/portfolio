@@ -33,11 +33,12 @@ html, body{
     --cor-card: #252525;
     --btn-hover: rgb(190, 190, 190);
     --gradiente: linear-gradient(to right, #ff41df, #02c0fa);
+    --sombra: 5px 5px 10px 3px rgba(0, 0, 0, 0.05);
  } 
 
 .light{
     --cor-base: #ffffff;
-    --cor-texto: rgb(27, 27, 27);
+    --cor-texto: rgb(37, 37, 37);
     --texto-hover: rgb(128, 128, 128);
     --btn-hover: rgb(148, 148, 148);
     --cor-card: #e2e2e2;
@@ -163,6 +164,7 @@ header {
     color: var(--cor-texto);
     padding: 0 30px;
     box-sizing: border-box;
+    box-shadow: var(--sombra);
 }
  
 header ul {
@@ -316,6 +318,7 @@ header a:active {
     cursor: pointer;
     transition: all 0.3s ease;
     animation: surgir-esquerda 1s ease-in-out;
+    box-shadow: var(--sombra);
 }
 
 .btn-home:hover{
@@ -425,6 +428,7 @@ header a:active {
     transition: transform 0.3s ease-in-out, opacity 0.5s ease-out;
     position: relative;
     border-radius: 20px;
+    box-shadow: var(--sombra);
 }
 
 .card::after {
@@ -775,6 +779,7 @@ header a:active {
     var(--gradiente) border-box; 
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: var(--sombra);
 }
 
 .form button:hover{
