@@ -9,6 +9,7 @@ a{
 }
 
 #container{
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 1920px;
@@ -131,13 +132,20 @@ ul.menu li::before {
     padding-left: 150px  !important;
 }
 
+footer {
+    width: 100%;
+    position: relative;
+}
+
 .rodape{
-    display: block;
+    
+    top: 874px;
+    display: flex;
+    align-items: center; /* alinha os itens verticalmente */
+    justify-content: center; /* separa o texto e o botão */
     color: #3cff00;
-    position: absolute;
-    left: 830px;
-    top: 860px;
-    width: 260px;
+    width: 100%;
+    margin: 0 auto; /* centraliza */
 }
 
 .rodape p{
@@ -335,9 +343,5 @@ button.btn-popup:hover{
 
 .img-port p{
     color: aquamarine;
-}
-
-.awesome-page .slider {
-    background: linear-gradient(to right, #3cff00, #0400ff, #51ff00);
 }
 

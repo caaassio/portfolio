@@ -1633,4 +1633,8 @@ input:checked + .slider:before {
         opacity: 0;
         transform: translateX(-50px);
     }
+
+    .toggle-awesome{
+        display: none !important;
+    }
 }

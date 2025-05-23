@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="./css/style.css">
-    <!-- <link rel="stylesheet" href="./css/style-toggle.css"> -->
+    <link rel="stylesheet" href="./css/style-toggle.css">
     
     <!-- fontawesome pro -->
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
@@ -38,7 +38,7 @@
             <ul id="menu">
 
                 <label class="switch">
-                    <input type="checkbox" id="toggleVersao" onclick="toggleMode()">
+                    <input type="checkbox" onclick="toggleMode()">
                     <span class="slider"></span>
                 </label>
 
@@ -277,6 +277,12 @@
     </div>
 
     <footer class="footer">
+
+        <label class="toggle-awesome">
+            <input type="checkbox" id="toggleAwesome">
+            <span class="slider-awesome"></span>
+        </label>
+        
         <p>
             2025 - Todos os direitos reservados
         </p>
@@ -290,6 +296,6 @@
     </div>
 
     <script src="./script.js"></script>
-    <!-- <script src="./script-toggle.js"></script> -->
+    <script src="./script-toggle.js"></script>
 </body>
 </html>

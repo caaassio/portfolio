@@ -1,16 +1,16 @@
 // ----------- toggle button -----------------------------
-document.getElementById("toggleVersao").addEventListener("change", () => {
+document.getElementById("toggleAwesome").addEventListener("change", () => {
     const paginaAtual = window.location.pathname;
   
     if (paginaAtual.includes("index")) {
       window.location.href = "awesome-web-site.html";
     } else {
-      window.location.href = "index.html";
+      window.location.href = "index.html#contato";
     }
   });
 
 window.addEventListener("DOMContentLoaded", () => {
-    const checkbox = document.getElementById("toggleVersao");
+    const checkbox = document.getElementById("toggleAwesome");
     const paginaAtual = window.location.pathname;
   
     if (paginaAtual.includes("awesome-web-site")) {
