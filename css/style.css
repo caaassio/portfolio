@@ -6,6 +6,7 @@ html, body{
     font-size: 18px;
     font-family: "Open Sans", sans-serif;
     scroll-behavior: smooth;
+    transition: background-color 0.5s ease-in-out;
 }
 
 .reveal{
@@ -42,6 +43,7 @@ html, body{
     --texto-hover: rgb(128, 128, 128);
     --btn-hover: rgb(148, 148, 148);
     --cor-card: #e2e2e2;
+    transition: all 0.5s ease-in-out;
  }
  
 #logo img {
@@ -62,6 +64,10 @@ html, body{
 body.light #logo img {
     filter: none;
 }
+
+body.light #logo img:hover{
+    filter: invert(30%);
+}
  
 .link-logo:hover{
     box-sizing: border-box;
@@ -78,7 +84,7 @@ body.light #logo img {
 
  #container{
     margin: 0;
-    padding: 0 5%;
+    padding: 0 8%;
     box-sizing: border-box;
  }
 
@@ -156,6 +162,11 @@ body.light #logo img {
     display: none;
 }
 
+#menu{
+    box-sizing: border-box;
+    
+}
+
 header {
     display: flex;
     height: 6em;
@@ -216,12 +227,52 @@ header a:active {
     box-sizing: border-box;
 }
 
-.index-page .slider {
-    background: var(--gradiente) border-box;
+.switch {
+    position: absolute;
+    top: 38px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    z-index: 9999;
+    box-sizing: border-box;
+}
+  
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradiente);
+    transition: background-color 0.4s ease;
+    border-radius: 34px;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--cor-base);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.4s ease-in-out;
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+
 }
 
-.index-page .slider:before {
-    background-color: var(--cor-base);
+input:checked + .slider:before {
+    transform: translateX(26px);
 }
 
 /* Home -----------------------------------------------------------------------------*/
@@ -316,9 +367,10 @@ header a:active {
     linear-gradient(var(--cor-base), var(--cor-base)) padding-box, 
     var(--gradiente) border-box; 
     cursor: pointer;
-    transition: all 0.3s ease;
     animation: surgir-esquerda 1s ease-in-out;
     box-shadow: var(--sombra);
+    transition: background 0.5s ease-in-out;
+
 }
 
 .btn-home:hover{
@@ -411,9 +463,8 @@ header a:active {
 }
 
 .group-card{
-    padding-left: 200px;
     display: flex;
-    gap: 50px;
+    gap: 35px;
     flex-wrap: wrap;
     box-sizing: border-box;
     justify-content: center;
@@ -423,8 +474,8 @@ header a:active {
 
 .card{
     background-color: var(--cor-card);
-    width: 450px;
-    height: 350px;
+    width: 415px;
+    height: 310px;
     transition: transform 0.3s ease-in-out, opacity 0.5s ease-out;
     position: relative;
     border-radius: 20px;
@@ -990,6 +1041,12 @@ header a:active {
         padding: 18px 22px;
         margin-top: 60px;
     }
+    
+    .switch {
+        top: 38px;
+        left: 35%;
+        transform: translateX(-30%);
+    }
 
     h1.section-title{
         font-size: 45px !important;
@@ -1012,7 +1069,7 @@ header a:active {
 
     .about-content{
         gap: 15px;
-        padding: 0 40px !important;
+        padding: 0 20px !important;
     }
 
     .about-content p{
@@ -1046,6 +1103,86 @@ header a:active {
     .form-group textarea {
         width: 100%;
     }
+}
+
+@media (max-width: 767px) and (min-width: 577px){
+
+    #container{
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+    }
+
+    .txt-home{
+        font-size: 22px;
+    }
+
+    .switch {
+        left: 27%;
+        transform: translateX(-30%);
+    }
+
+    #about img {
+        width: 45%;
+        max-width: 90%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .about-content p{
+        font-size: 16px;
+        margin: 0;
+        padding: 10px !important;
+    }
+
+    .txt-home{
+        position: absolute;
+        top: 260px !important;
+        left: 20px !important;
+    }
+
+    .btn-home{
+        text-align: center;
+    }
+
+    #contato{
+        width: auto !important;
+        height: 100% !important;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .wrapper-contato{
+        width: auto;
+        height: 700px;
+        margin: auto;
+    }
+
+    .redes-sociais{
+        width: 500px;
+        height: auto;
+        float: none;
+    }
+
+    .form{
+        width: 500px;
+        height: 100%;
+        order: 0;
+        float: none;
+        margin: 0;
+        padding: 0 !important;
+    }
+
+    .form-group input, .form-group textarea{
+        width: 100%;
+    }
+
+    footer{
+        bottom: -300px !important;
+    }
+
 }
 
 @media (max-width: 576px) {
@@ -1102,7 +1239,7 @@ header a:active {
         justify-content: center;
         flex-direction: column;
         position: absolute;
-        top: 6em;
+        top: 5em;
         right: 0;
         width: 100%;
         height: 100%;
@@ -1136,6 +1273,13 @@ header a:active {
     #logo img{
         margin: 0;
         padding: 0;
+    }
+
+    .switch {
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-sizing: border-box;
     }
     
     /* Home -------------------------------------------------------------------- */
@@ -1339,11 +1483,12 @@ header a:active {
     }
 
     .card{
-        height: 240px;
+        height: 260px;
     }
 
     .card p{
         margin: 0;
+        padding: 11px 15px;
     }
 
     .card-actions{

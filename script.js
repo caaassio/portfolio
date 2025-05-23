@@ -166,6 +166,7 @@ const observer = new IntersectionObserver((entries) => {
 
 observer.observe(botao);
 
+
 // ------------------- toggle light -------------------------------
 function toggleMode() {
     document.body.classList.toggle('light');

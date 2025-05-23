@@ -66,8 +66,9 @@ input:checked + .slider:before {
 @media screen and (max-width: 576px) {
     
     .switch {
-        top: -68px;
+        top: -60px;
         left: 50%;
         transform: translateX(-50%);
+        box-sizing: border-box;
     }
 }
