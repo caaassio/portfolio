@@ -260,3 +260,57 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// -------------------- menu active ---------------------------------
+// Seleciona todos os links internos do menu
+const menuLinks = document.querySelectorAll('header ul li a.internal-link');
+
+// Função para verificar a seção atual
+function setActiveLink() {
+    let index = -1;
+
+    // Para cada seção, verifica qual está mais próxima do topo
+    document.querySelectorAll('section').forEach((section, i) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= window.innerHeight / 2 && rect.bottom >= 0) {
+            index = i;
+        }
+    });
+
+    // Remove active de todos
+    menuLinks.forEach(link => link.classList.remove('active'));
+
+    // Se encontrou uma seção visível, adiciona active no link correspondente
+    if (index !== -1) {
+        const id = document.querySelectorAll('section')[index].id;
+        const activeLink = document.querySelector(`header ul li a[href="#${id}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
+    }
+}
+
+// Detecta o scroll e chama a função
+window.addEventListener('scroll', setActiveLink);
+
+// Chama inicialmente para o caso de abrir a página no meio
+setActiveLink();
+
+
+// ---------------- transparencia header --------------------------------------
+let lastScrollTop = 0;
+const header = document.querySelector('header');
+
+window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+        // Rolando para baixo → esconde
+        header.style.transform = 'translateY(-100%)';
+    } else {
+        // Rolando para cima → mostra
+        header.style.transform = 'translateY(0)';
+    }
+    
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Evita valores negativos
+});
+
