@@ -128,14 +128,14 @@ cards.forEach(card => {
 
     modal.classList.add('active');
     modalContent.classList.add('show');
-    document.body.classList.add('modal-aberto'); // ⬅️ Bloqueia rolagem
+    document.body.classList.add('modal-aberto'); 
   });
 });
 
 function closeModal() {
   modalContent.classList.remove('show');
   modal.classList.remove('active');
-  document.body.classList.remove('modal-aberto'); // ⬅️ Libera rolagem
+  document.body.classList.remove('modal-aberto'); 
 }
 
 closeBtn.addEventListener('click', closeModal);
@@ -161,13 +161,102 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, {
-  threshold: 0.3 // sensibilidade (ajuste se quiser que ative mais cedo ou mais tarde)
+  threshold: 0.3 
 });
 
 observer.observe(botao);
 
 
 // ------------------- toggle light -------------------------------
-function toggleMode() {
-    document.body.classList.toggle('light');
-}
+    function toggleMode() {
+        const body = document.body;
+        const checkbox = document.querySelector('.switch input');
+
+        if (body.classList.contains('light')) {
+            body.classList.remove('light');
+            body.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+            checkbox.checked = false;
+        } else {
+            body.classList.remove('dark');
+            body.classList.add('light');
+            localStorage.setItem('theme', 'light');
+            checkbox.checked = true;
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme');
+        const body = document.body;
+        const checkbox = document.querySelector('.switch input');
+
+        if (savedTheme === 'light') {
+            body.classList.add('light');
+            checkbox.checked = true;
+        } else {
+            body.classList.add('dark');  
+            checkbox.checked = false;
+        }
+    });
+
+// ---------------------- Pop sério? ------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+  const nomeInput = document.getElementById('nome');
+  const emailInput = document.getElementById('email');
+  const popupAlerta = document.getElementById('popupAlerta');
+  const fecharPopupAlerta = document.getElementById('fecharPopupAlerta');
+
+  let popupJaExibido = false; 
+
+  emailInput.addEventListener('focus', () => {
+    if (nomeInput.value.trim() !== '' && !popupJaExibido) {
+      popupAlerta.style.display = 'flex';
+      popupJaExibido = true; 
+    }
+  });
+
+  fecharPopupAlerta.addEventListener('click', () => {
+    popupAlerta.style.display = 'none';
+  });
+});
+
+// ------------------------ no smoth -----------------------------------
+
+window.addEventListener('DOMContentLoaded', () => {
+  const url = window.location.href;
+
+  if (url.includes('no-smooth')) {
+
+    document.documentElement.style.scrollBehavior = 'auto';
+    document.body.style.scrollBehavior = 'auto';
+
+    document.documentElement.style.overflowX = 'hidden';
+    document.body.style.overflowX = 'hidden';
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      el.style.animation = 'none';
+    });
+
+    const hashIndex = url.indexOf('#');
+    if (hashIndex !== -1) {
+      const hash = url.substring(hashIndex + 1).split('&')[0];
+      const target = document.getElementById(hash);
+      if (target) {
+        target.scrollIntoView({ behavior: 'auto' });
+      }
+    }
+
+    setTimeout(() => {
+      document.documentElement.style.scrollBehavior = 'smooth';
+      document.body.style.scrollBehavior = 'smooth';
+
+      document.documentElement.style.overflowX = '';
+      document.body.style.overflowX = '';
+
+      document.querySelectorAll('.reveal').forEach(el => {
+        el.style.animation = '';
+      });
+    }, 1000);
+  }
+});
+

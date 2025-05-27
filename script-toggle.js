@@ -5,7 +5,7 @@ document.getElementById("toggleAwesome").addEventListener("change", () => {
     if (paginaAtual.includes("index")) {
       window.location.href = "awesome-web-site.html";
     } else {
-      window.location.href = "index.html#contato";
+      window.location.href = "index.html#contato&no-smooth'";
     }
   });
 

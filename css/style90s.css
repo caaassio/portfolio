@@ -19,6 +19,7 @@ a{
     overflow: hidden;
 }
 
+/* --------------------------------- Index ------------------------------ */
 .foto{
     display: block;
     position:absolute;
@@ -132,25 +133,8 @@ ul.menu li::before {
     padding-left: 150px  !important;
 }
 
-footer {
-    width: 100%;
-    position: relative;
-}
 
-.rodape{
-    
-    top: 874px;
-    display: flex;
-    align-items: center; /* alinha os itens verticalmente */
-    justify-content: center; /* separa o texto e o botão */
-    color: #3cff00;
-    width: 100%;
-    margin: 0 auto; /* centraliza */
-}
-
-.rodape p{
-    flex-wrap: nowrap;
-}
+/* --------------------------------- Sobre ------------------------------ */
 
 .cubo{
     width: 400px;
@@ -160,7 +144,7 @@ footer {
     position: absolute;
     z-index: 3;
     top: 20px;
-    left: 380px;
+    left: 480px;
     overflow: visible;
 }
 
@@ -185,7 +169,7 @@ footer {
     height: 420px;
     width: auto;
     position: absolute;
-    left: 800px;
+    left: 900px;
 }
 
 .conteudo-texto{
@@ -197,7 +181,7 @@ footer {
     padding: 0;
     width: 700px;
     height: 300px;
-    left: 400px;
+    left: 500px;
     top: 450px;
     overflow: hidden;
 }
@@ -209,8 +193,52 @@ footer {
     left: 50px;
 }
 
+
+/* --------------------------------- Portfolio ------------------------------ */
+
+.header-portfolio .foto{
+    height: 200px;
+    box-sizing: border-box;
+}
+
+.foto img{
+    height: 190px;
+}
+
+.header-portfolio h1{
+    display: flex;
+    position: relative;
+    color: white;
+    font-size: 50px;
+    font-family: 'Comic Sans MS', sans-serif;
+    font-style: italic;
+    left: 250px;
+    width: 700px;
+}
+
+.galeria{
+    width: 1500px;
+    display: flex;
+    position: relative;
+    top: 170px;
+    left: 150px;
+    gap: 10px;
+    flex-wrap: wrap;
+    box-sizing: border-box !important;
+}
+
+.galeria img{
+    width: 290px;
+}
+
+.img-port p{
+    color: aquamarine;
+}
+
+
+/* --------------------------------- Contato ------------------------------ */
 .contato-gif{
-    left: 790px;
+    left: 710px;
     top: 30px;
     width: 200px;
     box-sizing: border-box;
@@ -220,7 +248,7 @@ footer {
 .form{
     display: flex;
     position: relative;
-    left: 680px;
+    left: 530px;
     top: 50px;
     height: 600px;
     width: 600px;
@@ -237,7 +265,7 @@ footer {
 }
 
 input, textarea{
-    width: 400px;
+    width: 600px;
 }
 
 .form button{
@@ -306,42 +334,25 @@ button.btn-popup:hover{
     background-color: rgb(163, 16, 16);
 }
 
-.header-portfolio .foto{
-    height: 200px;
-    box-sizing: border-box;
-}
-
-.foto img{
-    height: 190px;
-}
-
-.header-portfolio h1{
-    display: flex;
+/* --------------------------------- Rodapé ------------------------------ */
+footer {
+    width: 100%;
     position: relative;
-    color: white;
-    font-size: 50px;
-    font-family: 'Comic Sans MS', sans-serif;
-    font-style: italic;
-    left: 250px;
-    width: 700px;
+    z-index: 9999;
 }
 
-.galeria{
-    width: 1300px;
+.rodape{
+    position:fixed;
+    top: 874px;
     display: flex;
-    position: relative;
-    top: 122px;
-    left: 200px;
-    gap: 10px;
-    flex-wrap: wrap;
-    box-sizing: border-box !important;
+    align-items: center; 
+    justify-content: center; 
+    color: #3cff00;
+    width: 100%;
+    margin: 0 auto;
+ 
 }
 
-.galeria img{
-    width: 250px;
+.rodape p{
+    flex-wrap: nowrap;
 }
-
-.img-port p{
-    color: aquamarine;
-}
-
