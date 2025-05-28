@@ -104,26 +104,23 @@ function fecharPopup() {
 // ----------------------------- Modal --------------------------------------
 const modal = document.getElementById('modal');
 const modalImg = document.getElementById('modal-img');
-const modalDescription = document.getElementById('modal-description');
+const modalSecondImg = document.getElementById('modal-second-img');
 const closeBtn = document.querySelector('.close-btn');
-const cardActions = document.getElementById('card-actions');
 const modalContent = modal.querySelector('.modal-content');
 const cards = document.querySelectorAll('.card');
 
 cards.forEach(card => {
   card.addEventListener('click', () => {
-    const imgSrc = card.querySelector('img').src;
-    const description = card.getAttribute('data-description');
+    const imgSrc = card.querySelector('picture img').src;
+    const secondImgSrc = card.getAttribute('data-second-img');
 
     modalImg.src = imgSrc;
-    modalDescription.innerHTML = description;
 
-    cardActions.innerHTML = "";
-    const actions = card.querySelector('.card-actions');
-    if (actions) {
-      const clonedActions = actions.cloneNode(true);
-      clonedActions.style.display = "flex";
-      cardActions.appendChild(clonedActions);
+    if (secondImgSrc) {
+      modalSecondImg.src = secondImgSrc;
+      modalSecondImg.style.display = 'block';
+    } else {
+      modalSecondImg.style.display = 'none'; // Oculta se não tiver segunda imagem
     }
 
     modal.classList.add('active');
@@ -145,6 +142,8 @@ window.addEventListener('click', (e) => {
     closeModal();
   }
 });
+
+
 
 
 // -------------------- animação botão enviar para mobile ----------------
@@ -220,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// ------------------------ no smoth -----------------------------------
+// ------------------------ no smooth -----------------------------------
 
 window.addEventListener('DOMContentLoaded', () => {
   const url = window.location.href;

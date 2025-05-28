@@ -42,10 +42,6 @@
                     <span class="slider"></span>
                 </label>
 
-                <!-- <label class="switch">
-                    <input type="checkbox" id="toggleVersao">
-                    <span class="slider"></span>
-                </label> -->
                 <li>
                     <a href="#home" class="internal-link">HOME</a>
                 </li>
@@ -112,8 +108,20 @@
             <div class="about-content">
                 <img src="./components/img/foto-about.png" class="reveal" alt="">
                 <div class="txt-content">
-                    <p class="reveal">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore dignissimos odio illo, distinctio eaque earum mollitia est unde accusamus ex velit aspernatur reiciendis voluptates, dolorum sed. Aliquam aspernatur aperiam quaerat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor esse eum vitae aliquam ea nemo eos cum dignissimos necessitatibus doloremque nesciunt, accusantium assumenda reiciendis asperiores expedita inventore perferendis. Sequi, error. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam amet expedita qui nemo quod, accusamus odit ea soluta unde magnam itaque repudiandae ipsum omnis natus earum sequi, nostrum quos consectetur.</p>
-                    <p class="reveal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis doloremque iste cumque ducimus recusandae odio eligendi ratione eveniet modi animi fuga adipisci minus rem, enim consequatur dignissimos praesentium ex sequi! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum, nobis. Eius minus reprehenderit perspiciatis earum ducimus. Illo voluptate perferendis itaque hic odio, enim distinctio molestiae doloremque! Animi rerum sunt possimus? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet accusamus fuga accusantium quidem assumenda pariatur quis ipsam aperiam ullam dolor provident ut, quas ab cumque quisquam tempora magni natus. Optio!</p>
+                    <p class="reveal">
+                        Olá! Me chamo Cássio Rodrigues, tenho 35 anos e sou desenvolvedor front-end. <br><br>
+                        Tenho uma base sólida em HTML, CSS, JavaScript e React.js, além de conhecimento de PHP e SASS. Minha formação em design gráfico complementa minhas habilidades técnicas, trazendo um olhar apurado para estética, usabilidade e experiência do usuário.<br><br>
+                    </p>
+                    <p class="reveal">
+                        Tenho familiaridade com versionamento usando Git/GitHub e utilizo metodologias de organização de código, além de explorar boas práticas de acessibilidade e SEO on-page.<br><br>
+                    </p>
+				    <p class="reveal">
+                        Gosto de criar interfaces responsivas, que se adaptam bem a diferentes dispositivos, sempre priorizando uma navegação intuitiva e fluida. Tenho como foco a construção de experiências funcionais, estéticas e acessíveis, combinando código limpo com boas práticas de usabilidade.<br><br>  
+                    </p>
+                    <p class="reveal">
+                        Valorizo a comunicação clara, o trabalho em equipe e a resolução criativa de problemas.
+                        Estou sempre aprendendo e evoluindo, buscando desafios que me permitam aplicar e expandir meus conhecimentos, colaborando em projetos que façam a diferença.
+                    </p>
                 </div>
 
             </div>
@@ -127,19 +135,18 @@
 
             <div class="group-card">
 
-                <div class="card reveal" data-description="<h1>Psicóloga Ana Carolline</h1>
-                <br>
-                Este site foi desenvolvido para a psicóloga Ana Carolline com o objetivo de apresentar sua abordagem clínica e facilitar o agendamento de atendimentos online. <br><br> Construído em HTML, CSS e JavaScript, o layout prioriza uma navegação simples e acolhedora, refletindo a empatia e profissionalismo da Ana.<br><br> O design responsivo garante uma boa experiência em qualquer dispositivo, e o conteúdo foi organizado para destacar sua formação, serviços oferecidos, depoimentos e um blog com temas da área da saúde mental.<br><br> Todo o projeto foi pensado para fortalecer a presença digital da profissional e gerar mais confiança nos pacientes desde o primeiro contato.">
+                <div class="card reveal" data-second-img="./components/img/tela-mobile.png">
                     <picture>
                         <img src="./components/img/tela-desk.jpg">
                     </picture>
-                    <p>1 Esse é um site feito com html e css</p>
-                    <div class="card-actions">
-                        <i class="fa-brands fa-html5" title="HTML5"></i>
-                        <i class="fa-brands fa-css3-alt" title="CSS3"></i>
-                        <i class="fa-brands fa-js" title="JavaScript"></i>
-                        <a href="https://caaassio.github.io/ana-carolline-psi/" target="_blank" class="btn">Ver site</a>
-                        <a href="https://github.com/caaassio/ana-carolline-psi"  target="_blank" class="btn">Repositório</a>
+                    <p>
+                        Este site foi desenvolvido para a psicóloga Ana Carolline, apresentando sua trajetória, abordagem, relatos de pacientes e facilitando o contato.<br>
+                        Construído em HTML, CSS e JavaScript, prioriza uma navegação simples, acolhedora e responsiva, com conteúdo de fácil acesso.<br>
+                        Todo o projeto visa fortalecer sua presença digital e transmitir segurança desde o primeiro contato.
+                    </p>
+                    <div class="card-icons">
+                        <a href="https://caaassio.github.io/ana-carolline-psi/" target="_blank"><i class="fa-regular fa-globe"></i></a>
+                        <a href="https://github.com/caaassio/ana-carolline-psi" target="_blank"><i class="fa-brands fa-github"></i></a>
                     </div>
                 </div>
 
@@ -199,18 +206,14 @@
 
         <!-- Modal -->
         <div id="modal" class="modal">
-            <div class="modal-content show">
+            <div class="modal-content">
                 <span class="close-btn">&times;</span>
-                <div class="modal-body">
-                    <img id="modal-img" src="" alt="Imagem do Projeto">
-                    <div id="modal-description" class="modal-description"></div>
-                </div>
-                
-                <div id="card-actions" class="card-actions">
-
-                </div>
+                <img id="modal-img">
+                <img id="modal-second-img">
             </div>
         </div>
+
+        <!-- Contato -->
 
         <section id="contato" class="reveal"> 
             <h1 class="section-title">
