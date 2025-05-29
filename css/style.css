@@ -1615,7 +1615,7 @@ input:checked + .slider:before {
 
     img#modal-img{
         margin: 0 !important;
-        width: 70% !important;
+        width: 90% !important;
     }
 
     .modal-description h1{
