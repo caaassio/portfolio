@@ -88,6 +88,18 @@ ul.menu li::before {
     border-radius: 50%; 
 }
 
+.gif-portfolio{
+    display: block;
+    position: absolute;
+    top: 400px;
+    left: 800px;
+}
+
+.gif-portfolio img{
+    width: auto;
+    height: 100px;
+}
+
 .barra-gradiente {
     height: 7px;
     width: 1600px;
@@ -179,11 +191,16 @@ ul.menu li::before {
     font-size: 18px;
     margin: 0;
     padding: 0;
-    width: 700px;
+    width: 800px;
     height: 300px;
-    left: 500px;
+    left: 450px;
     top: 450px;
     overflow: hidden;
+}
+
+.conteudo-texto p{
+    line-height: 1;
+    margin: 0 !important;
 }
 
 .btn-voltar{

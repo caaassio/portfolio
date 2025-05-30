@@ -120,7 +120,7 @@ cards.forEach(card => {
       modalSecondImg.src = secondImgSrc;
       modalSecondImg.style.display = 'block';
     } else {
-      modalSecondImg.style.display = 'none'; // Oculta se não tiver segunda imagem
+      modalSecondImg.style.display = 'none'; 
     }
 
     modal.classList.add('active');
