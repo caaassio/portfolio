@@ -103,36 +103,106 @@ function fecharPopup() {
 
 // ----------------------------- Modal --------------------------------------
 const modal = document.getElementById('modal');
-const modalImg = document.getElementById('modal-img');
-const modalSecondImg = document.getElementById('modal-second-img');
 const closeBtn = document.querySelector('.close-btn');
 const modalContent = modal.querySelector('.modal-content');
 const cards = document.querySelectorAll('.card');
+const prevBtn = modal.querySelector('.carousel-btn.prev');
+const nextBtn = modal.querySelector('.carousel-btn.next');
+const carouselImagesContainer = document.querySelector('.carousel-images');
+
+let current = 0;
+let carouselImages = [];
+
+function showImage(index) {
+  carouselImages.forEach((img, i) => {
+    img.classList.toggle('active', i === index);
+  });
+}
 
 cards.forEach(card => {
   card.addEventListener('click', () => {
-    const imgSrc = card.querySelector('picture img').src;
-    const secondImgSrc = card.getAttribute('data-second-img');
+    // Limpa imagens antigas
+    carouselImagesContainer.innerHTML = '';
 
-    modalImg.src = imgSrc;
+    // Pega as imagens do card
+    const imgSrcs = [
+      card.querySelector('picture img')?.src,
+      card.getAttribute('data-img-2'),
+      card.getAttribute('data-img-3'),
+      card.getAttribute('data-img-4'),
+      card.getAttribute('data-img-5')
+    ].filter(src => !!src); // Remove valores nulos/falsos
 
-    if (secondImgSrc) {
-      modalSecondImg.src = secondImgSrc;
-      modalSecondImg.style.display = 'block';
-    } else {
-      modalSecondImg.style.display = 'none'; 
-    }
+    // Cria as imagens dinamicamente
+    carouselImages = [];
+
+    imgSrcs.forEach((src, idx) => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.className = 'carousel-image';
+      img.alt = `Imagem ${idx + 1}`;
+      carouselImagesContainer.appendChild(img);
+      carouselImages.push(img);
+    });
+
+    current = 0;
+    showImage(current);
 
     modal.classList.add('active');
     modalContent.classList.add('show');
-    document.body.classList.add('modal-aberto'); 
+    document.body.classList.add('modal-aberto');
   });
+});
+
+prevBtn.addEventListener('click', () => {
+  if (carouselImages.length === 0) return;
+  current = (current - 1 + carouselImages.length) % carouselImages.length;
+  showImage(current);
+});
+
+nextBtn.addEventListener('click', () => {
+  if (carouselImages.length === 0) return;
+  current = (current + 1) % carouselImages.length;
+  showImage(current);
+});
+
+// Swipe
+let startX = 0;
+let endX = 0;
+
+carouselImagesContainer.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+});
+
+carouselImagesContainer.addEventListener('touchmove', (e) => {
+  endX = e.touches[0].clientX;
+});
+
+carouselImagesContainer.addEventListener('touchend', () => {
+  if (startX && endX) {
+    const diff = startX - endX;
+    if (Math.abs(diff) > 50 && carouselImages.length > 1) {
+      if (diff > 0) {
+        // Swipe esquerda
+        current = (current + 1) % carouselImages.length;
+        showImage(current);
+      } else {
+        // Swipe direita
+        current = (current - 1 + carouselImages.length) % carouselImages.length;
+        showImage(current);
+      }
+    }
+  }
+  startX = 0;
+  endX = 0;
 });
 
 function closeModal() {
   modalContent.classList.remove('show');
   modal.classList.remove('active');
-  document.body.classList.remove('modal-aberto'); 
+  document.body.classList.remove('modal-aberto');
+  carouselImagesContainer.innerHTML = '';
+  carouselImages = [];
 }
 
 closeBtn.addEventListener('click', closeModal);
@@ -142,8 +212,6 @@ window.addEventListener('click', (e) => {
     closeModal();
   }
 });
-
-
 
 
 // -------------------- animação botão enviar para mobile ----------------

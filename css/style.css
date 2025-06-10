@@ -35,6 +35,7 @@ html, body{
     --btn-hover: rgb(190, 190, 190);
     --gradiente: linear-gradient(to right, #ff41df, #02c0fa);
     --sombra: 5px 5px 10px 3px rgba(0, 0, 0, 0.05);
+    --txt-active: rgb(231, 231, 231);
  } 
 
 .light{
@@ -44,6 +45,7 @@ html, body{
     --btn-hover: rgb(148, 148, 148);
     --cor-card: #e2e2e2;
     transition: all 0.5s ease-in-out;
+    --txt-active: #85c8ff;
  }
  
 #logo img {
@@ -207,7 +209,7 @@ header ul li a {
 header ul li a.active {
     border: 3px solid transparent;
     border-radius: 15px;
-    color: var(--texto-hover);
+    color: var(--txt-active);
     background: 
         linear-gradient(var(--cor-base), var(--cor-base)) padding-box, 
         var(--gradiente) border-box; 
@@ -377,7 +379,6 @@ input:checked + .slider:before {
     animation: surgir-esquerda 1s ease-in-out;
     box-shadow: var(--sombra);
     transition: background 0.5s ease-in-out;
-
 }
 
 .btn-home:hover{
@@ -489,7 +490,7 @@ input:checked + .slider:before {
 .card{
     background-color: var(--cor-card);
     width: 415px;
-    height: 500px;
+    height: 575px;
     padding: 20px;
     transition: transform 0.3s ease-in-out, opacity 0.5s ease-out;
     position: relative;
@@ -499,6 +500,7 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-sizing: border-box;
 }
 
 .card::after {
@@ -547,10 +549,6 @@ input:checked + .slider:before {
     filter: opacity(0.8);
 }
 
-.img-mobile{
-    display: none;
-}
-
 .card-icons{
     font-size: 26px;
     display: flex;
@@ -593,12 +591,12 @@ input:checked + .slider:before {
 
 .modal-content {
     background: var(--cor-card);
-    padding: 60px;
+    padding: 40px 60px;
     border-radius: 15px;
     width: 90vw;
     height: 80vh;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     box-sizing: border-box;
     position: relative;
     opacity: 0;
@@ -612,34 +610,79 @@ input:checked + .slider:before {
     transform: scale(1);
 }
 
-#modal-img{
-    border: 15px solid rgb(46, 46, 46);
-    border-radius: 20px;
-    height: 80%;
-    display: flex;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-#modal-second-img{
-    height: 80%;
-    display: flex;
-    position: relative;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
 .close-btn {
     position: absolute;
+    padding: 5px;
     top: 5px;
     right: 15px;
-    font-size: 34px;
+    font-size: 22px;
     cursor: pointer;
 }
 
 .close-btn:hover{
     color: var(--cor-texto);
-    filter: opacity(50%);
+    filter: opacity(70%);
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.carousel-images {
+    height: auto;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-images img {
+    border-radius: 10px;
+}
+
+.carousel-image {
+    display: none;
+    width: 80%;
+    height: 80%;
+    object-fit: contain; 
+    border-radius: 10px;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.carousel-image.active {
+    display: block;
+}
+
+.carousel-btn {
+    border: none;
+    background-color: transparent;
+    color: var(--cor-texto);
+    font-size: 4rem;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.carousel-btn.prev {
+    left: -50px;
+}
+
+.carousel-btn.next {
+    right: -50px;
+}
+
+.carousel-btn.next:hover, .carousel-btn.prev:hover{   
+    color: var(--cor-texto);
+    filter: opacity(70%);
 }
  
 /* Contato --------------------------------------------------------------------*/
@@ -824,7 +867,7 @@ input:checked + .slider:before {
     border: 3px solid transparent;
     border-radius: 15px;
     background: 
-    linear-gradient(rgb(190, 190, 190), rgb(190, 190, 190)) padding-box, 
+    linear-gradient(rgb(230, 230, 230), rgb(230, 230, 230)) padding-box, 
     var(--gradiente) border-box; 
     transition: all 0.3s ease;
 }
@@ -1075,6 +1118,10 @@ input:checked + .slider:before {
 
 @media (max-width: 992px) and (min-width: 768px){
 
+    #container{
+        padding: 0 4%;
+    }
+
     .txt-home{
         font-size: 22px;
     }
@@ -1111,6 +1158,10 @@ input:checked + .slider:before {
         gap: 15px !important;
     }
 
+    #about p{
+        padding: 0 !important;
+    }
+
     #about img {
         width: 45%;
         max-width: 90%;
@@ -1119,8 +1170,12 @@ input:checked + .slider:before {
     }
 
     .about-content{
-        gap: 15px;
+        gap: 20px;
         padding: 0 20px !important;
+    }
+
+    .txt-content {
+        padding: 10px;
     }
 
     .about-content p{
@@ -1369,6 +1424,7 @@ input:checked + .slider:before {
         justify-content: start;
         padding: 20px 0px 27px 30px;
 
+        box-sizing: border-box;
         width: 100%;
     }
 
@@ -1624,6 +1680,14 @@ input:checked + .slider:before {
     .modal-description h1{
         margin: 0 !important;
         font-size: 20px !important;
+    }
+
+    .carousel-btn.prev {
+        left: -30px;
+    }
+
+    .carousel-btn.next {
+        right: -30px;
     }
 
     /* Contato --------------------------------------------------------------- */
