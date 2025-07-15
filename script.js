@@ -30,7 +30,7 @@ function digitar(texto, callback) {
     if (i < texto.length) {
         elemento.innerHTML += texto.charAt(i);
         i++;
-        setTimeout(() => digitar(texto, callback), 140);
+        setTimeout(() => digitar(texto, callback), 120);
     } else if (callback) {
         callback();
     }

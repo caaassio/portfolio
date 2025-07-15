@@ -318,10 +318,10 @@ input:checked + .slider:before {
     overflow: hidden;
 }
 
-.txt-home-mobile{
+ .txt-home-mobile{
     display: none;
 }
-  
+
 .txt-home::after {
     content: "";
     width: 3px;
@@ -400,7 +400,7 @@ input:checked + .slider:before {
         transform: translateX(0);
         opacity: 1;
     }
-  }
+}
 
 /* Sobre ---------------------------------------------------------------------------------- */
 #about {
