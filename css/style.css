@@ -220,40 +220,53 @@ header {
     z-index: 1000; 
     background-color: var(--cor-base); 
     transition: transform 0.3s ease-in-out;
-}
- 
-header ul {
-    display: flex;
-    list-style: none;
-    box-sizing: border-box;
-    font-weight: 600;
-}
- 
-header ul li {
-    position: relative;
-    margin: 0 15px;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
-}
- 
-header ul li a {
-    text-decoration: none;
-    box-sizing: border-box;
-    border: 3px solid transparent;
-    border-radius: 14px;
-    transition: all 0.2s ease-in-out;
+    ul {
+        display: flex;
+        list-style: none;
+        box-sizing: border-box;
+        font-weight: 600;
+
+        li {
+            position: relative;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+
+            a {
+                text-decoration: none;
+                box-sizing: border-box;
+                border: 3px solid transparent;
+                border-radius: 14px;
+                transition: all 0.2s ease-in-out;
+            }
+
+            a.active {
+                position: relative;
+                color: var(--txt-active);
+                border: 3px solid transparent;
+                border-radius: 15px;
+                background: 
+                    linear-gradient(var(--cor-base), var(--cor-base)) padding-box,
+                    conic-gradient(from var(--angle), #ff41df, #02c0fa, #ff41df) border-box;
+                transition: all 0.2s ease-in-out;
+                animation: spin 3s linear infinite;
+            }
+        }
+    }
 }
 
-header ul li a.active {
-    border: 3px solid transparent;
-    border-radius: 15px;
-    color: var(--txt-active);
-    background: 
-        linear-gradient(var(--cor-base), var(--cor-base)) padding-box, 
-        var(--gradiente) border-box; 
-    transition: all 0.2s ease-in-out;
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
- 
+
+@keyframes spin {
+  from { --angle: 0deg; }
+  to   { --angle: 360deg; }
+}
+
+
 header #escrito {
     height: 60px;
     box-sizing: border-box;
@@ -269,10 +282,10 @@ header a:visited {
 header a:hover {
     border: 3px solid transparent;
     border-radius: 15px;
-    background: 
-    linear-gradient(var(--cor-base), var(--cor-base)) padding-box, 
-    var(--gradiente) border-box; 
+    background: linear-gradient(var(--cor-base), var(--cor-base)) padding-box,
+    conic-gradient(from var(--angle), #ff41df, #02c0fa, #ff41df) border-box;
     transition: all 0.2s ease-in-out;
+    animation: spin 3s linear infinite;
 }
  
 header a:active {
@@ -409,11 +422,11 @@ input:checked + .slider:before {
     margin-top: 60px;
     border: 3px solid transparent;
     border-radius: 15px;
-    background: 
-    linear-gradient(var(--cor-card), var(--cor-card)) padding-box, 
-    var(--gradiente) border-box; 
+    background: linear-gradient(var(--cor-base), var(--cor-base)) padding-box,
+    conic-gradient(from var(--angle), #ff41df, #02c0fa, #ff41df) border-box;
+    transition: all 0.2s ease-in-out;
+    animation: spin 3s linear infinite, surgir-esquerda 1s ease-in-out;
     cursor: pointer;
-    animation: surgir-esquerda 1s ease-in-out;
     box-shadow: var(--sombra);
     transition: background 0.5s ease-in-out;
 }
@@ -423,7 +436,7 @@ input:checked + .slider:before {
     border: 3px solid transparent;
     border-radius: 15px;
     background: 
-    linear-gradient(var(--cor-base), var(--cor-base)) padding-box, 
+    linear-gradient(var(--cor-card), var(--cor-card)) padding-box, 
     var(--gradiente) border-box; 
     transition: all 0.3s ease;
 }
@@ -766,9 +779,10 @@ input:checked + .slider:before {
 .email:hover{
     border: 3px solid transparent;
     border-radius: 15px;
-    background: 
-    linear-gradient(var(--cor-base), var(--cor-base)) padding-box, 
-    var(--gradiente) border-box; 
+    background: linear-gradient(var(--cor-base), var(--cor-base)) padding-box,
+    conic-gradient(from var(--angle), #ff41df, #02c0fa, #ff41df) border-box;
+    transition: all 0.2s ease-in-out;
+    animation: spin 3s linear infinite;
     transition: background-color 0.3s ease, color 0.3s ease-in-out;
     box-sizing: border-box;
 }
@@ -824,9 +838,10 @@ input:checked + .slider:before {
     border: 3px solid transparent;
     border-radius: 15px;
     background: 
-    linear-gradient(var(--cor-base), var(--cor-base)) padding-box, 
-    var(--gradiente) border-box; 
-    transition: background-color 0.3s ease, color 0.3s ease-in-out;
+    linear-gradient(var(--cor-base), var(--cor-base)) padding-box,
+    conic-gradient(from var(--angle), #ff41df, #02c0fa, #ff41df) border-box;
+    transition: all 0.2s ease-in-out;
+    animation: spin 3s linear infinite;
     box-sizing: border-box;
 }
 
@@ -891,11 +906,11 @@ input:checked + .slider:before {
     margin-top: 30px;
     border: 3px solid transparent;
     border-radius: 15px;
-    background: 
-    linear-gradient(var(--cor-base), var(--cor-base)) padding-box, 
-    var(--gradiente) border-box; 
+    background: linear-gradient(var(--cor-base), var(--cor-base)) padding-box,
+    conic-gradient(from var(--angle), #ff41df, #02c0fa, #ff41df) border-box;
+    transition: all 0.2s ease-in-out;
+    animation: spin 3s linear infinite;
     cursor: pointer;
-    transition: all 0.3s ease;
     box-shadow: var(--sombra);
 }
 
@@ -903,10 +918,10 @@ input:checked + .slider:before {
     color: #151515;
     border: 3px solid transparent;
     border-radius: 15px;
-    background: 
-    linear-gradient(rgb(230, 230, 230), rgb(230, 230, 230)) padding-box, 
-    var(--gradiente) border-box; 
-    transition: all 0.3s ease;
+    background:linear-gradient(var(--cor-card), var(--cor-card)) padding-box,
+    conic-gradient(from var(--angle), #ff41df, #02c0fa, #ff41df) border-box;
+    transition: all 0.2s ease-in-out;
+    animation: spin 3s linear infinite;
 }
 
 .popup-alerta {
@@ -1159,6 +1174,15 @@ input:checked + .slider:before {
         padding: 0 4%;
     }
 
+    .slider{
+        display: none;
+    }
+
+    .link-logo {
+        padding: 0 !important;
+        flex-wrap: nowrap;
+    }
+
     .txt-home{
         font-size: 22px;
     }
@@ -1173,8 +1197,12 @@ input:checked + .slider:before {
         display: inline-block;
     }
 
-    header ul li a{
-        padding: 15px 10px !important;
+    header ul li{
+        margin: 5px;
+
+        a{
+            padding: 10px 10px !important;
+        }
     }
     
     .switch {
@@ -1248,97 +1276,9 @@ input:checked + .slider:before {
     }
 }
 
-@media (max-width: 767px) and (min-width: 577px){
+@media (max-width: 767px) {
 
-    #container{
-        display: flex;
-        flex-direction: column;
-        box-sizing: border-box;
-    }
 
-    .txt-home{
-        font-size: 22px;
-    }
-
-    #logo img{
-        margin: 5px 0 0 0 !important;
-    }
-
-    header ul li a{
-        padding: 15px 10px !important;
-    }
-
-    .switch {
-        left: 21%;
-        transform: translateX(-30%);
-    }
-
-    #about img {
-        width: 45%;
-        max-width: 90%;
-        padding: 0;
-        margin: 0;
-    }
-
-    .about-content p{
-        font-size: 16px;
-        margin: 0;
-        padding: 10px !important;
-    }
-
-    .txt-home{
-        position: absolute;
-        top: 260px !important;
-        left: 20px !important;
-    }
-
-    .btn-home{
-        text-align: center;
-    }
-
-    #contato{
-        width: auto !important;
-        height: 100% !important;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .wrapper-contato{
-        width: auto;
-        height: 700px;
-        margin: auto;
-    }
-
-    .redes-sociais{
-        width: 500px;
-        height: auto;
-        float: none;
-    }
-
-    .form{
-        width: 500px;
-        height: 100%;
-        order: 0;
-        float: none;
-        margin: 0;
-        padding: 0 !important;
-    }
-
-    .form-group input, .form-group textarea{
-        width: 100%;
-    }
-
-    footer{
-        bottom: -300px !important;
-    }
-
-}
-
-@media (max-width: 576px) {
-
-    /* Menu -------------------------------------------------------------------- */
     #menu-btn {
         background: none;
         border: none;
@@ -1381,38 +1321,39 @@ input:checked + .slider:before {
 
     header {
         height: 5em;
-    }
 
-    header ul {
-        z-index: 11;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        position: absolute;
-        top: 5em;
-        right: 0;
-        width: 100%;
-        height: 100vh;
-        backdrop-filter: blur(20px); 
-        background-color: rgba(15, 15, 15, 0.3); 
-        padding: 0;
-        margin: 0;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
-        gap: 25px;
-    }
-    
-    header ul li {
-        top: -60px;
-        text-align: center;
-        margin: 15px 0;
-        padding: 15px;
-    }
+        ul {
+            z-index: 11;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: absolute;
+            top: 5em;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            backdrop-filter: blur(20px); 
+            background-color: rgba(15, 15, 15, 0.3); 
+            padding: 0;
+            margin: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+            gap: 25px;
 
-    header ul li a{
-        font-size: 26px;
+            li {
+                top: -60px;
+                text-align: center;
+                margin: 15px 0;
+                padding: 15px;
+
+                a{
+                    font-size: 26px;
+                }
+            }
+        }
+
     }
  
     header ul.show {
@@ -1421,10 +1362,8 @@ input:checked + .slider:before {
         visibility: visible;
     }
 
-    #logo img{
-        margin: 0;
-        padding: 0;
-    }
+
+    /* Menu -------------------------------------------------------------------- */
 
     .switch {
         top: -60px;
