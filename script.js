@@ -19,28 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 });
 
-// ----------------- efeito typing --------------------------------
 
-const texto = "Olá, eu sou Cassio Rodrigues, desenvolvedor Front-end";
-const elemento = document.getElementById("typewriter");
-
-let i = 0;
-
-function digitar(texto, callback) {
-    if (i < texto.length) {
-        elemento.innerHTML += texto.charAt(i);
-        i++;
-        setTimeout(() => digitar(texto, callback), 120);
-    } else if (callback) {
-        callback();
-    }
-}
-
-digitar(texto, () => {
-
-});
-
-// ------------------efeito typing para mobile -----------
+// ------------------efeito typing  -----------
 
 const lines = document.querySelectorAll('.css-typing h4');
 
@@ -53,7 +33,7 @@ lines.forEach((line, index) => {
 });
 
 
-// ------------------- foguete ---------------------------
+// ------------------- foguete / back to top ---------------------------
 const rocketButton = document.getElementById('backToTop');
 
 rocketButton.addEventListener('click', () => {
@@ -121,19 +101,16 @@ function showImage(index) {
 
 cards.forEach(card => {
   card.addEventListener('click', () => {
-    // Limpa imagens antigas
     carouselImagesContainer.innerHTML = '';
 
-    // Pega as imagens do card
     const imgSrcs = [
       card.querySelector('picture img')?.src,
       card.getAttribute('data-img-2'),
       card.getAttribute('data-img-3'),
       card.getAttribute('data-img-4'),
       card.getAttribute('data-img-5')
-    ].filter(src => !!src); // Remove valores nulos/falsos
+    ].filter(src => !!src); 
 
-    // Cria as imagens dinamicamente
     carouselImages = [];
 
     imgSrcs.forEach((src, idx) => {
@@ -235,36 +212,28 @@ observer.observe(botao);
 
 
 // ------------------- toggle light -------------------------------
-    function toggleMode() {
-        const body = document.body;
-        const checkbox = document.querySelector('.switch input');
+(function() {
+  const body = document.body;
+  const switchBtn = document.getElementById('themeSwitch');
+  const checkbox = document.getElementById('themeToggle');
 
-        if (body.classList.contains('light')) {
-            body.classList.remove('light');
-            body.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-            checkbox.checked = false;
-        } else {
-            body.classList.remove('dark');
-            body.classList.add('light');
-            localStorage.setItem('theme', 'light');
-            checkbox.checked = true;
-        }
-    }
+  function applyTheme(theme) {
+    const isLight = theme === 'light';
+    body.classList.toggle('light', isLight);
+    body.classList.toggle('dark', !isLight);
+    checkbox.checked = isLight;
+    switchBtn.classList.toggle('active', isLight);
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  }
 
-    window.addEventListener('DOMContentLoaded', () => {
-        const savedTheme = localStorage.getItem('theme');
-        const body = document.body;
-        const checkbox = document.querySelector('.switch input');
+  const saved = localStorage.getItem('theme') ||
+                (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  applyTheme(saved);
 
-        if (savedTheme === 'light') {
-            body.classList.add('light');
-            checkbox.checked = true;
-        } else {
-            body.classList.add('dark');  
-            checkbox.checked = false;
-        }
-    });
+  checkbox.addEventListener('change', () => {
+    applyTheme(checkbox.checked ? 'light' : 'dark');
+  });
+})();
 
 // ---------------------- Pop sério? ------------------------------
 document.addEventListener('DOMContentLoaded', () => {

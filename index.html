@@ -34,11 +34,6 @@
             </div>
         </a>
 
-        <label class="switch">
-            <input type="checkbox" onclick="toggleMode()">
-            <span class="slider"></span>
-        </label>
-
         <nav>
             <button id="menu-btn">
                 <i class="fa-solid fa-bars"></i>
@@ -57,6 +52,12 @@
                 </li>
                 <li>
                     <a href="#contato" class="internal-link">CONTATO</a>
+                </li>
+                <li>
+                    <label class="switch" id="themeSwitch" aria-label="Alternar tema">
+                        <input type="checkbox" id="themeToggle" />
+                        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                    </label>
                 </li>
                 
             </ul>
@@ -82,7 +83,7 @@
 
             <div class="txt-wrapper">
 
-                <div class="txt-home" id="typewriter"></div>
+                <!-- <div class="txt-home" id="typewriter"></div> -->
 
                 <div class="txt-home-mobile">
                     <div class="css-typing">
@@ -232,7 +233,6 @@
             <div class="carousel">
               <button class="carousel-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
               <div class="carousel-images">
-                <!-- As imagens serão inseridas via JS -->
               </div>
               <button class="carousel-btn next"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
