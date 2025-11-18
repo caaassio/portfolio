@@ -469,6 +469,8 @@ header a:visited {
 .btn-cv{
     color: var(--cor-texto);
     border: 3px solid teal;
+    align-items: center;
+    justify-content: center;
     display: flex;
     font-size: 1.3rem;    
     font-weight: 600;
@@ -1465,7 +1467,7 @@ header a:visited {
         margin: 0;
         padding: 0;
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         height: auto;
     }
 
@@ -1569,6 +1571,11 @@ header a:visited {
         display: none;
     }
 
+    .home-right{
+        display: flex;
+        min-width: 95vw;
+    }
+
     .btn-home{
         display: flex;
         font-size: 20px;
@@ -1584,19 +1591,64 @@ header a:visited {
 
     .img-home{
         display: flex;
+        align-items: center;
+        justify-content: center;
         order: 0;
         padding-top: 25px;
         padding-bottom: 25px;
     }
 
     .img-home img {
-        max-width: 130vw;
+        max-width: 70%;
         transform: translateX(0);
     }
 
-    .scroll-msg{
-        display: none;
+    .redes-home{
+        height: 100%;
     }
+
+    .redes-home i{
+        font-size: 1.3rem;
+    }
+
+    .redes-home::before{
+        top: -8rem;
+        height: 130px;
+    }
+
+    .home-left{
+        display: flex;
+        min-width: 95vw;
+    }
+
+    .txt-home-name{
+
+        & span:first-child {
+            font-size: 2.5rem;
+        }
+
+        & span:nth-child(2){
+            font-size: 1.65rem;
+        }
+    }
+
+    .btns-home{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .btn-cv{
+        width: 11rem;
+        font-size: 1rem;
+    }
+
+    .btn-home{
+        margin-top: 0;
+        font-size: 1rem;
+        width: 11rem;
+    }
+
 
     /* Sobre -------------------------------------------------------------- */
     #about {
@@ -1661,7 +1713,7 @@ header a:visited {
 
     .card{
         width: 415px;
-        height: 500px;
+        min-height: 100%;
     }
 
     .card p{
