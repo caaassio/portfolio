@@ -19,40 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 });
 
-// ----------------- efeito typing --------------------------------
-
-const texto = "Olá, eu sou Cassio Rodrigues, desenvolvedor Front-end";
-const elemento = document.getElementById("typewriter");
-
-let i = 0;
-
-function digitar(texto, callback) {
-    if (i < texto.length) {
-        elemento.innerHTML += texto.charAt(i);
-        i++;
-        setTimeout(() => digitar(texto, callback), 120);
-    } else if (callback) {
-        callback();
-    }
-}
-
-digitar(texto, () => {
-
-});
-
-// ------------------efeito typing para mobile -----------
-
-const lines = document.querySelectorAll('.css-typing h4');
-
-lines.forEach((line, index) => {
-  const delays = [2000, 4100, 6300]; 
-
-  setTimeout(() => {
-    line.classList.add('typed');
-  }, delays[index]);
-});
-
-
 // ------------------- foguete ---------------------------
 const rocketButton = document.getElementById('backToTop');
 
@@ -121,19 +87,17 @@ function showImage(index) {
 
 cards.forEach(card => {
   card.addEventListener('click', () => {
-    // Limpa imagens antigas
+
     carouselImagesContainer.innerHTML = '';
 
-    // Pega as imagens do card
     const imgSrcs = [
       card.querySelector('picture img')?.src,
       card.getAttribute('data-img-2'),
       card.getAttribute('data-img-3'),
       card.getAttribute('data-img-4'),
       card.getAttribute('data-img-5')
-    ].filter(src => !!src); // Remove valores nulos/falsos
+    ].filter(src => !!src); 
 
-    // Cria as imagens dinamicamente
     carouselImages = [];
 
     imgSrcs.forEach((src, idx) => {
@@ -235,36 +199,28 @@ observer.observe(botao);
 
 
 // ------------------- toggle light -------------------------------
-    function toggleMode() {
-        const body = document.body;
-        const checkbox = document.querySelector('.switch input');
+(function() {
+  const body = document.body;
+  const switchBtn = document.getElementById('themeSwitch');
+  const checkbox = document.getElementById('themeToggle');
 
-        if (body.classList.contains('light')) {
-            body.classList.remove('light');
-            body.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-            checkbox.checked = false;
-        } else {
-            body.classList.remove('dark');
-            body.classList.add('light');
-            localStorage.setItem('theme', 'light');
-            checkbox.checked = true;
-        }
-    }
+  function applyTheme(theme) {
+    const isLight = theme === 'light';
+    body.classList.toggle('light', isLight);
+    body.classList.toggle('dark', !isLight);
+    checkbox.checked = isLight;
+    switchBtn.classList.toggle('active', isLight);
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  }
 
-    window.addEventListener('DOMContentLoaded', () => {
-        const savedTheme = localStorage.getItem('theme');
-        const body = document.body;
-        const checkbox = document.querySelector('.switch input');
+  const saved = localStorage.getItem('theme') ||
+                (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  applyTheme(saved);
 
-        if (savedTheme === 'light') {
-            body.classList.add('light');
-            checkbox.checked = true;
-        } else {
-            body.classList.add('dark');  
-            checkbox.checked = false;
-        }
-    });
+  checkbox.addEventListener('change', () => {
+    applyTheme(checkbox.checked ? 'light' : 'dark');
+  });
+})();
 
 // ---------------------- Pop sério? ------------------------------
 document.addEventListener('DOMContentLoaded', () => {
@@ -288,7 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ------------------------ no smooth -----------------------------------
-
 window.addEventListener('DOMContentLoaded', () => {
   const url = window.location.href;
 
@@ -328,14 +283,11 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // -------------------- menu active ---------------------------------
-// Seleciona todos os links internos do menu
 const menuLinks = document.querySelectorAll('header ul li a.internal-link');
 
-// Função para verificar a seção atual
 function setActiveLink() {
     let index = -1;
 
-    // Para cada seção, verifica qual está mais próxima do topo
     document.querySelectorAll('section').forEach((section, i) => {
         const rect = section.getBoundingClientRect();
         if (rect.top <= window.innerHeight / 2 && rect.bottom >= 0) {
@@ -343,10 +295,8 @@ function setActiveLink() {
         }
     });
 
-    // Remove active de todos
     menuLinks.forEach(link => link.classList.remove('active'));
 
-    // Se encontrou uma seção visível, adiciona active no link correspondente
     if (index !== -1) {
         const id = document.querySelectorAll('section')[index].id;
         const activeLink = document.querySelector(`header ul li a[href="#${id}"]`);
@@ -356,12 +306,9 @@ function setActiveLink() {
     }
 }
 
-// Detecta o scroll e chama a função
 window.addEventListener('scroll', setActiveLink);
 
-// Chama inicialmente para o caso de abrir a página no meio
 setActiveLink();
-
 
 // ---------------- transparencia header --------------------------------------
 let lastScrollTop = 0;
@@ -371,13 +318,13 @@ window.addEventListener('scroll', function() {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     if (scrollTop > lastScrollTop) {
-        // Rolando para baixo → esconde
-        header.style.transform = 'translateY(-100%)';
+
+      header.style.transform = 'translateY(-100%)';
     } else {
-        // Rolando para cima → mostra
-        header.style.transform = 'translateY(0)';
+
+      header.style.transform = 'translateY(0)';
     }
     
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Evita valores negativos
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
 });
 

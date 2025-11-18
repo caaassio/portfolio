@@ -7,6 +7,20 @@ html, body{
     font-family: "Open Sans", sans-serif !important;
     scroll-behavior: smooth;
     transition: background-color 0.5s ease-in-out;
+    --bg-dim: 0; 
+    background-repeat: repeat-y;
+    background-size: 100% auto;
+    background-position: top center;
+    transition: background-image 0.4s ease, filter 0.4s ease;  
+}
+
+body.light{
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.05)),
+        url(../components/img/bg-inf-light.jpg);
+    background-repeat: repeat-y;
+    background-size: 100% auto;
+    background-position: top center;
 }
 
 .reveal{
@@ -28,14 +42,16 @@ html, body{
   }
 
 :root{
-    --cor-base: #151515;
+    --cor-base: #1d1630;
     --cor-texto: rgb(231, 231, 231);
     --texto-hover: rgb(172, 172, 172);
-    --cor-card: #252525;
+    --cor-card: #2c253f;
     --btn-hover: rgb(190, 190, 190);
-    --gradiente: linear-gradient(to right, #ff41df, #02c0fa);
+    --gradiente: linear-gradient(to right, #1d1630, teal);
     --sombra: 5px 5px 10px 3px rgba(0, 0, 0, 0.05);
     --txt-active: rgb(231, 231, 231);
+    --color-name: teal;
+    --link-redes: white;
  } 
 
 .light{
@@ -45,7 +61,10 @@ html, body{
     --btn-hover: rgb(148, 148, 148);
     --cor-card: #e2e2e2;
     transition: all 0.5s ease-in-out;
-    --txt-active: #85c8ff;
+    --txt-active: #3c2775;
+    --color-name: #3c2775;
+    --link-redes: #3c2775;
+
  }
  
 #logo img {
@@ -208,49 +227,77 @@ body.light #logo img:hover{
 
 header {
     display: flex;
-    height: 6em;
+    height: 5.5em;
+    margin: 0 auto;
+    padding: 0 3rem;
     align-items: center;
     justify-content: space-between;
     color: var(--cor-texto);
-    padding: 0 30px;
     box-sizing: border-box;
     box-shadow: var(--sombra);
-    position:sticky;
-    top: 0; 
+    position: sticky;
+    top: 0;
+    background-color: var(--cor-base);
     z-index: 1000; 
-    background-color: var(--cor-base); 
     transition: transform 0.3s ease-in-out;
-    ul {
+
+    & ul {
         display: flex;
         list-style: none;
+        align-items: center;
         box-sizing: border-box;
         font-weight: 600;
+        padding-right: 2rem;
 
-        li {
+        & li {
+            display: flex;
+            align-items: center;
             position: relative;
             margin: 0 15px;
             transition: all 0.3s ease;
             box-sizing: border-box;
 
-            a {
+            & a {
+                position: relative;
+                display: inline-block;
                 text-decoration: none;
                 box-sizing: border-box;
-                border: 3px solid transparent;
                 border-radius: 14px;
-                transition: all 0.2s ease-in-out;
+                border: 3px solid transparent;
+                color: var(--cor-texto);
+                transition: opacity 0.2s ease-in-out, color 0.2s ease-in-out;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 50%;
+                    bottom: -3px;         
+                    width: 0;
+                    height: 3px;
+                    background: teal;      
+                    transform: translateX(-50%);
+                    transform-origin: center;
+                    transition: width .3s ease;
+                }
+
+                &:not(.active):hover::after {
+                    width: 70%;
+                }
+
             }
 
-            a.active {
+            & a.active {
                 position: relative;
                 color: var(--txt-active);
                 border: 3px solid transparent;
                 border-radius: 15px;
                 background: 
                     linear-gradient(var(--cor-base), var(--cor-base)) padding-box,
-                    conic-gradient(from var(--angle), #ff41df, #02c0fa, #ff41df) border-box;
+                    conic-gradient(from var(--angle),  transparent, teal, transparent) border-box;
                 transition: all 0.2s ease-in-out;
-                animation: spin 3s linear infinite;
+                animation: spin 4s linear infinite;
             }
+
         }
     }
 }
@@ -267,94 +314,76 @@ header {
 }
 
 
-header #escrito {
-    height: 60px;
-    box-sizing: border-box;
-}
-
-header a:link,
-header a:visited {
+header ul a:link,
+header ul a:visited {
     color: var(--cor-texto);
     box-sizing: border-box;
     padding: 15px;
 }
- 
-header a:hover {
-    border: 3px solid transparent;
-    border-radius: 15px;
-    background: linear-gradient(var(--cor-base), var(--cor-base)) padding-box,
-    conic-gradient(from var(--angle), #ff41df, #02c0fa, #ff41df) border-box;
-    transition: all 0.2s ease-in-out;
-    animation: spin 3s linear infinite;
-}
- 
-header a:active {
-    color: rgb(248, 61, 207);
-    box-sizing: border-box;
+
+header a:visited {
+    color: var(--cor-texto);
 }
 
 .switch {
-    position: absolute;
-    top: 38px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    z-index: 9999;
-    box-sizing: border-box;
-}
-  
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-  
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--gradiente);
-    transition: background-color 0.4s ease;
-    border-radius: 34px;
-}
-  
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: var(--cor-base);
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.4s ease-in-out;
-    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:#34c759; 
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  z-index: 9999;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color .3s ease;
 }
 
-input:checked + .slider:before {
-    transform: translateX(26px);
+.switch input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.switch i {
+  font-size: 30px;
+  color: #fff;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  transition: transform .3s ease, color .3s ease;
+  pointer-events: none; 
+}
+
+.switch.active { background-color: #85858569; }        
+.switch.active i { color: #ffffff; }
+
+.switch:hover i { transform: rotate(-15deg) scale(1.05); }
+
+.link-logo{
+    color: var(--cor-texto);
 }
 
 /* Home -----------------------------------------------------------------------------*/
 #home{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     width: 100%;
-    max-width: 100vw;
+    max-width: 90vw;
     height: 76vh;
     box-sizing: border-box;
 }
 
-.txt-wrapper{
+.home-left{
+    display: flex;
     align-items: center;
     justify-content: center;
-    display: flex;
     flex-direction: column;
-    width: 48.5vw;
     box-sizing: border-box;
 }
 
@@ -368,7 +397,7 @@ input:checked + .slider:before {
     overflow: hidden;
 }
 
- .txt-home-mobile{
+.txt-home-mobile{
     display: none;
 }
 
@@ -386,6 +415,10 @@ input:checked + .slider:before {
     50% { opacity: 0; }
 } 
 
+.home-right{
+    display: flex;
+}
+
 .img-home{
     padding: 0;
     margin: 0;
@@ -393,8 +426,6 @@ input:checked + .slider:before {
     box-sizing: border-box;
     align-self: center;
     justify-content: center;
-    right: 0;
-    width: 50vw;
 }
 
 .img-home img{
@@ -405,6 +436,7 @@ input:checked + .slider:before {
     box-sizing: border-box;
     overflow: hidden;
     transition: all 1s;
+    opacity: 0.6;
 }
 
 .img-home img:hover{
@@ -412,18 +444,60 @@ input:checked + .slider:before {
     transition: all 1s;
 }
 
-.btn-home{
-    color:  var(--cor-texto);
+.txt-home-name{
     display: flex;
-    font-size: 24px;
+    flex-direction: column;
+
+    & span:first-child {
+        font-size: 3.5rem;
+    }
+
+    & span:nth-child(2){
+        font-size: 2rem;
+        color: var(--color-name);
+    }
+}
+
+.btns-home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    box-sizing: border-box;
+}
+
+.btn-cv{
+    color: var(--cor-texto);
+    border: 3px solid teal;
+    display: flex;
+    font-size: 1.3rem;    
     font-weight: 600;
     text-transform: uppercase;
-    padding: 20px 30px;
+    padding: 15px 25px;
     margin-top: 60px;
-    border: 3px solid transparent;
     border-radius: 15px;
-    background: linear-gradient(var(--cor-base), var(--cor-base)) padding-box,
-    conic-gradient(from var(--angle), #ff41df, #02c0fa, #ff41df) border-box;
+    transition: all 0.2s ease-in-out;
+    animation: spin 3s linear infinite, surgir-esquerda 1s ease-in-out;
+    cursor: pointer;
+    box-shadow: var(--sombra);
+    transition: background 0.5s ease-in-out;
+}
+
+.btn-cv:hover{
+    color: teal;
+    transition: all 0.3s ease;
+}
+
+.btn-home{
+    color: white;
+    background-color: teal;
+    display: flex;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 15px 25px;
+    margin-top: 60px;
+    border-radius: 15px;
     transition: all 0.2s ease-in-out;
     animation: spin 3s linear infinite, surgir-esquerda 1s ease-in-out;
     cursor: pointer;
@@ -432,13 +506,54 @@ input:checked + .slider:before {
 }
 
 .btn-home:hover{
-    color: var(--cor-texto);
-    border: 3px solid transparent;
-    border-radius: 15px;
-    background: 
-    linear-gradient(var(--cor-card), var(--cor-card)) padding-box, 
-    var(--gradiente) border-box; 
+    background: rgb(0, 83, 83); 
     transition: all 0.3s ease;
+}
+
+.redes-home{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    top: 200px;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+    position: relative;
+        i {
+            font-size: 2rem;
+            gap: 20px;
+            color: var(--link-redes);
+            transition: all 0.4s ease-in-out;
+        }
+
+        i:hover{
+            color: var(--btn-hover);
+            transition: all 0.4s ease-in-out;
+        }
+
+        a:visited{
+            color: var(--link-redes);
+        }
+}
+
+.redes-home::before{
+    content: "";
+    position: absolute;
+    top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 200px;
+    background-color: teal;
+}
+
+.redes-home ul {
+    list-style: none;
+    flex-direction: column;
+    display: flex;     
+    gap: 20px;         
+    padding: 0;
+    margin: 0;
 }
 
 @keyframes surgir-esquerda{
@@ -455,7 +570,7 @@ input:checked + .slider:before {
 /* Sobre ---------------------------------------------------------------------------------- */
 #about {
     width: 100%;
-    min-height: 100vh;
+    min-height: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -466,7 +581,7 @@ input:checked + .slider:before {
 #about .section-title {
     font-size: 3.5em;
     display: flex;
-    background: var(--gradiente); 
+    background: teal; 
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -480,15 +595,7 @@ input:checked + .slider:before {
     gap: 40px;
     padding: 0 3%;
 }
-  
-#about img {
-    width: 600px;
-    padding: 0;
-    margin: 0;
-    display: block;
-    object-fit: contain;
-}
-  
+
 #about p {
     padding: 0;
     margin: 0;
@@ -518,7 +625,7 @@ input:checked + .slider:before {
 #portfolio .section-title{
     font-size: 3.5em;
     display: flex;
-    background: var(--gradiente); 
+    background: teal; 
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -551,16 +658,6 @@ input:checked + .slider:before {
     flex-direction: column;
     justify-content: space-between;
     box-sizing: border-box;
-}
-
-.card::after {
-    content: "";
-    position: absolute;
-    left: 20px;
-    bottom: 0;
-    height: 5px; 
-    width: 90%;
-    background: linear-gradient(to right, transparent, #02c0fa, #ff41df, transparent);
 }
 
 .card:hover{
@@ -747,7 +844,7 @@ input:checked + .slider:before {
 #contato .section-title{
     font-size: 3.5em;
     display: flex;
-    background: var(--gradiente); 
+    background: teal; 
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -774,17 +871,13 @@ input:checked + .slider:before {
     width: auto;
     text-decoration: none;
     width: fit-content;
+    transition: all 0.4s ease-in-out;
+
 }
 
 .email:hover{
-    border: 3px solid transparent;
-    border-radius: 15px;
-    background: linear-gradient(var(--cor-base), var(--cor-base)) padding-box,
-    conic-gradient(from var(--angle), #ff41df, #02c0fa, #ff41df) border-box;
-    transition: all 0.2s ease-in-out;
-    animation: spin 3s linear infinite;
-    transition: background-color 0.3s ease, color 0.3s ease-in-out;
-    box-sizing: border-box;
+    color: var(--btn-hover);
+    transition: all 0.4s ease-in-out;
 }
 
 .email i{
@@ -821,7 +914,13 @@ input:checked + .slider:before {
 
 .social-icons i{
     color:  var(--cor-texto);
-    font-size: 30px;
+    font-size: 1.8rem;
+    transition: all 0.4s ease-in-out;
+}
+
+.social-icons i:hover{
+    color: var(--btn-hover);
+    transition: all 0.4s ease-in-out;
 }
 
 .social-icons a{
@@ -831,18 +930,6 @@ input:checked + .slider:before {
     display: flex;
     transition: all 0.3s ease;
     border: 3px solid transparent;
-}
-
-.social-icons a:hover{
-    transition: all 0.3s ease;
-    border: 3px solid transparent;
-    border-radius: 15px;
-    background: 
-    linear-gradient(var(--cor-base), var(--cor-base)) padding-box,
-    conic-gradient(from var(--angle), #ff41df, #02c0fa, #ff41df) border-box;
-    transition: all 0.2s ease-in-out;
-    animation: spin 3s linear infinite;
-    box-sizing: border-box;
 }
 
 .redes-sociais{
@@ -900,28 +987,21 @@ input:checked + .slider:before {
 .form button{
     font-size: 24px;
     font-weight: 600;
-    color:  var(--cor-texto);
+    color: white;
+    background-color: teal;
     padding: 15px 35px;
     border-radius: 14px;
     margin-top: 30px;
     border: 3px solid transparent;
     border-radius: 15px;
-    background: linear-gradient(var(--cor-base), var(--cor-base)) padding-box,
-    conic-gradient(from var(--angle), #ff41df, #02c0fa, #ff41df) border-box;
     transition: all 0.2s ease-in-out;
-    animation: spin 3s linear infinite;
     cursor: pointer;
-    box-shadow: var(--sombra);
 }
 
 .form button:hover{
-    color: #151515;
     border: 3px solid transparent;
-    border-radius: 15px;
-    background:linear-gradient(var(--cor-card), var(--cor-card)) padding-box,
-    conic-gradient(from var(--angle), #ff41df, #02c0fa, #ff41df) border-box;
-    transition: all 0.2s ease-in-out;
-    animation: spin 3s linear infinite;
+    background: rgb(0, 83, 83); 
+    transition: all 0.3s ease;
 }
 
 .popup-alerta {
