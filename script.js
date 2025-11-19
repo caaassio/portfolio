@@ -19,21 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 });
 
-
-// ------------------efeito typing  -----------
-
-const lines = document.querySelectorAll('.css-typing h4');
-
-lines.forEach((line, index) => {
-  const delays = [2000, 4100, 6300]; 
-
-  setTimeout(() => {
-    line.classList.add('typed');
-  }, delays[index]);
-});
-
-
-// ------------------- foguete / back to top ---------------------------
+// ------------------- foguete ---------------------------
 const rocketButton = document.getElementById('backToTop');
 
 rocketButton.addEventListener('click', () => {
@@ -101,6 +87,7 @@ function showImage(index) {
 
 cards.forEach(card => {
   card.addEventListener('click', () => {
+
     carouselImagesContainer.innerHTML = '';
 
     const imgSrcs = [
@@ -257,7 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ------------------------ no smooth -----------------------------------
-
 window.addEventListener('DOMContentLoaded', () => {
   const url = window.location.href;
 
@@ -297,14 +283,11 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // -------------------- menu active ---------------------------------
-// Seleciona todos os links internos do menu
 const menuLinks = document.querySelectorAll('header ul li a.internal-link');
 
-// Função para verificar a seção atual
 function setActiveLink() {
     let index = -1;
 
-    // Para cada seção, verifica qual está mais próxima do topo
     document.querySelectorAll('section').forEach((section, i) => {
         const rect = section.getBoundingClientRect();
         if (rect.top <= window.innerHeight / 2 && rect.bottom >= 0) {
@@ -312,10 +295,8 @@ function setActiveLink() {
         }
     });
 
-    // Remove active de todos
     menuLinks.forEach(link => link.classList.remove('active'));
 
-    // Se encontrou uma seção visível, adiciona active no link correspondente
     if (index !== -1) {
         const id = document.querySelectorAll('section')[index].id;
         const activeLink = document.querySelector(`header ul li a[href="#${id}"]`);
@@ -325,12 +306,9 @@ function setActiveLink() {
     }
 }
 
-// Detecta o scroll e chama a função
 window.addEventListener('scroll', setActiveLink);
 
-// Chama inicialmente para o caso de abrir a página no meio
 setActiveLink();
-
 
 // ---------------- transparencia header --------------------------------------
 let lastScrollTop = 0;
@@ -340,13 +318,13 @@ window.addEventListener('scroll', function() {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     if (scrollTop > lastScrollTop) {
-        // Rolando para baixo → esconde
-        header.style.transform = 'translateY(-100%)';
+
+      header.style.transform = 'translateY(-100%)';
     } else {
-        // Rolando para cima → mostra
-        header.style.transform = 'translateY(0)';
+
+      header.style.transform = 'translateY(0)';
     }
     
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Evita valores negativos
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
 });
 
