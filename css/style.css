@@ -14,15 +14,6 @@ html, body{
     transition: background-image 0.4s ease, filter 0.4s ease;  
 }
 
-body.light{
-    background-image: 
-        linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.05)),
-        url(../components/img/bg-inf-light.jpg);
-    background-repeat: repeat-y;
-    background-size: 100% auto;
-    background-position: top center;
-}
-
 .reveal{
     animation: appear linear; 
     animation-timeline: view();
@@ -1410,24 +1401,24 @@ header a:visited {
             justify-content: center;
             flex-direction: column;
             position: absolute;
-            top: 5em;
+            top: 4em;
             right: 0;
             width: 100%;
             height: 100vh;
             backdrop-filter: blur(20px); 
-            background-color: rgba(15, 15, 15, 0.3); 
+            background-color: rgba(15, 15, 15, 0.233); 
             padding: 0;
             margin: 0;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
-            gap: 25px;
+            gap: 15px;
 
             li {
                 top: -60px;
                 text-align: center;
-                margin: 15px 0;
-                padding: 15px;
+                margin:  0;
+                padding: 0;
 
                 a{
                     font-size: 26px;
@@ -1447,11 +1438,10 @@ header a:visited {
 
     .switch {
         top: -60px;
-        left: 50%;
-        transform: translateX(-50%);
+
         box-sizing: border-box;
     }
-    
+
     /* Home -------------------------------------------------------------------- */
     #container{
         padding: 0;

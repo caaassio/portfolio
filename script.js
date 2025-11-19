@@ -12,13 +12,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const links = menu.querySelectorAll("a");
     links.forEach(link => {
-      link.addEventListener("click", () => {
-        menu.classList.remove("show");
-    
+        link.addEventListener("click", () => {
+            menu.classList.remove("show");
+        });
     });
-});
-});
 
+});
 // ------------------- foguete ---------------------------
 const rocketButton = document.getElementById('backToTop');
 
