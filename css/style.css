@@ -55,7 +55,6 @@ html, body{
     --txt-active: #3c2775;
     --color-name: #3c2775;
     --link-redes: #3c2775;
-
  }
  
 #logo img {
@@ -1438,7 +1437,6 @@ header a:visited {
 
     .switch {
         top: -60px;
-
         box-sizing: border-box;
     }
 
