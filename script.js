@@ -351,3 +351,26 @@ window.addEventListener('scroll', function() {
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
 });
 
+// toasty
+const knob = document.querySelector('.knob-wrapper');
+const egg = document.querySelector('.easter-egg');
+
+let isPlaying = false;
+
+knob.addEventListener('mouseenter', () =>{
+  if (isPlaying) return;
+
+  isPlaying = true;
+
+  egg.style.animation = 'egg-up-down 1s ease-in-out';
+
+  egg.addEventListener(
+    'animationend',
+    () => {
+      egg.style.animation = 'none';
+      isPlaying = false;
+    },
+    {once: true}
+  );
+
+});

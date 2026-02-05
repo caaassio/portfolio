@@ -27,15 +27,3 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
 
-// toasty
-  document.addEventListener('mouseover', (e) => {
-    const knob = e.target.closest('.knob-wrapper');
-    if (!knob) return;
-
-    if (knob.dataset.jaMostrou) return;
-    knob.dataset.jaMostrou = '1';
-
-    knob.classList.add('show-easter-egg');
-    setTimeout(() => knob.classList.remove('show-easter-egg'), 1200);
-  });
-
