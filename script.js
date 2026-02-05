@@ -19,7 +19,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 // ------------------- foguete ---------------------------
+// const rocketButton = document.getElementById('backToTop');
+
+// rocketButton.addEventListener('click', () => {
+//   rocketButton.classList.add('active');
+
+//   window.scrollTo({
+//     top: 0,
+//     behavior: 'smooth'
+//   });
+
+//   setTimeout(() => {
+//     rocketButton.classList.remove('active');
+//   }, 800);
+// });
+
 const rocketButton = document.getElementById('backToTop');
+const homeSection = document.getElementById('home');
+
+window.addEventListener('scroll', () => {
+  const homeHeight = homeSection.offsetHeight;
+
+  if (window.scrollY < homeHeight) {
+    rocketButton.classList.remove('show');
+  } else {
+    rocketButton.classList.add('show');
+  }
+});
 
 rocketButton.addEventListener('click', () => {
   rocketButton.classList.add('active');
@@ -31,9 +57,8 @@ rocketButton.addEventListener('click', () => {
 
   setTimeout(() => {
     rocketButton.classList.remove('active');
-  }, 800);
+  }, 1500);
 });
-
 
 // ------------------------ pop formulario ----------------------------
 document.getElementById("meuFormulario").addEventListener("submit", function (e) {
@@ -129,7 +154,6 @@ nextBtn.addEventListener('click', () => {
   showImage(current);
 });
 
-// Swipe
 let startX = 0;
 let endX = 0;
 
@@ -146,11 +170,11 @@ carouselImagesContainer.addEventListener('touchend', () => {
     const diff = startX - endX;
     if (Math.abs(diff) > 50 && carouselImages.length > 1) {
       if (diff > 0) {
-        // Swipe esquerda
+
         current = (current + 1) % carouselImages.length;
         showImage(current);
       } else {
-        // Swipe direita
+
         current = (current - 1 + carouselImages.length) % carouselImages.length;
         showImage(current);
       }

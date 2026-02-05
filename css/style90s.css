@@ -145,7 +145,6 @@ ul.menu li::before {
     padding-left: 150px  !important;
 }
 
-
 /* --------------------------------- Sobre ------------------------------ */
 
 .cubo{
@@ -210,7 +209,6 @@ ul.menu li::before {
     left: 50px;
 }
 
-
 /* --------------------------------- Portfolio ------------------------------ */
 
 .header-portfolio .foto{
@@ -251,7 +249,6 @@ ul.menu li::before {
 .img-port p{
     color: aquamarine;
 }
-
 
 /* --------------------------------- Contato ------------------------------ */
 .contato-gif{
@@ -317,7 +314,7 @@ input, textarea{
     font-family: 'Comic Sans MS', cursive, sans-serif;
     text-align: center;
     width: 320px;
-    height: 250px;
+    height: 50px;
     box-sizing: border-box;
 }
 
@@ -367,7 +364,7 @@ footer {
     color: #3cff00;
     width: 100%;
     margin: 0 auto;
- 
+
 }
 
 .rodape p{

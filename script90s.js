@@ -3,14 +3,14 @@ const formulario = document.getElementById("meuFormulario");
 
 if (formulario) {
   formulario.addEventListener("submit", function (e) {
-    e.preventDefault(); // impede envio padrão
+    e.preventDefault(); 
 
     const form = e.target;
 
     fetch(form.action, {
       method: form.method,
       headers: {
-        'Accept': 'application/json' // evita redirecionamento e recebe JSON da Formspree
+        'Accept': 'application/json' 
       },
       body: new FormData(form),
     })
@@ -18,7 +18,7 @@ if (formulario) {
       if (response.ok) {
         const popup = document.getElementById("popupObrigado");
         if (popup) popup.style.display = "flex";
-        form.reset(); // limpa o formulário
+        form.reset();
       } else {
         alert("Algo deu errado. Tente novamente.");
       }
@@ -39,7 +39,6 @@ function fecharPopup() {
 const dataHoje = new Date();
 const formatoData = { day: 'numeric', month: 'long', year: 'numeric' };
 
-// Exibe a data formatada
 document.getElementById('data-hoje').textContent = dataHoje.toLocaleDateString('pt-BR', formatoData);
 
 function atualizarHora() {
@@ -51,8 +50,6 @@ function atualizarHora() {
     document.getElementById('hora-agora').textContent = `${horas}:${minutos}:${segundos}`;
 }
 
-// Atualiza imediatamente ao carregar
 atualizarHora();
 
-// Atualiza a cada segundo
 setInterval(atualizarHora, 1000);

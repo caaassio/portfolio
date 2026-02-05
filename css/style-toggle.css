@@ -3,75 +3,72 @@ body {
 	transition: opacity 0.5s ease;
 }
 
-.toggle-awesome {
+.knob-wrapper {
 	position: absolute;
-	bottom: 38px;
-	display: inline-block;
-	left: 50px;
 	width: 60px;
-	height: 15px;
-	z-index: 9999;
+	height: 60px;
+	cursor: pointer;
+	bottom: 56px;
+	left: 56px;
 	box-sizing: border-box;
-	cursor: pointer;
 }
 
-.toggle-awesome input {
+.knob-wrapper input {
 	opacity: 0;
-	width: 0;
-	height: 0;
-}
-
-.slider-awesome {
+	width: 100%;
+	height: 100%;
 	position: absolute;
 	cursor: pointer;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: linear-gradient(to right, #d3d3d3, #8b8b8b, #dddddd);
-	transition: background-color 0.4s ease;
+	z-index: 20;
 }
 
-.slider-awesome:before {
+.knob {
+	background-color: #333;
+	height: 60px;
+	width: 60px;
+	border-radius: 50%;
+	border: 5px solid #424242;           
+	box-sizing: border-box;
 	position: absolute;
-	content: "";
-	height: 35px;
-	width: 20px;
-	left: 4px;
-	bottom: -10px;
-	background-color: rgb(87, 87, 87);
-	transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-	box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
+	box-shadow:
+		inset 3px 3px 8px rgba(0,0,0,0.6),
+		0 8px 16px rgba(0,0,0,0.4);
+	pointer-events: none;
 }
 
-input:checked + .slider-awesome {
-	background-color: #00ffcc;
-}
-
-input:checked + .slider-awesome:before {
-	transform: translateX(30px);
-}
-
-.toggle-awesome::after {
+.knob::before {
 	content: "";
 	position: absolute;
-	bottom: -10px; 
-	left: 50%;
-	transform: translateX(-50%) translateY(0);
-	width: 80px;
-	height: 80px;
-	background-image: url("/components/img/toasty.png");
-	background-size: contain;
-	background-repeat: no-repeat;
-	opacity: 0;
-	transition:
-		transform 0.5s ease,
-		opacity 0.5s ease;
-	pointer-events: none; 
-    z-index: -1;
+	inset: -8px;                       
+	border-radius: 50%;
+	background: radial-gradient(circle, #22222211, #35353500);
+	box-shadow: 0 0 20px rgba(100,255,200,0);
+	transition: box-shadow 0.4s;
 }
 
-.toggle-awesome.show-easter-egg::after {
-	transform: translateX(-50%) translateY(-45px);
-	opacity: 1;
+.knob::after {
+	content: "";
+	position: absolute;
+	width: 6px;
+	height: 22px;                      
+	background: linear-gradient(to top, #e0e0e0, #ffffff);
+	border-radius: 6px;
+	top: -4px;                          
+	left: 40%;                         
+	transform: translateX(-30%) rotate(-45deg);
+	transform-origin: center 26px;    
+	box-shadow: 0 3px 8px rgba(63, 63, 63, 0.6);
+	transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1.2);
+}
+
+.knob-wrapper input:checked + .knob::after {
+	transform: translateX(-30%) rotate(45deg);
+	left: 55%;
+	box-shadow: 0 3px 8px rgba(0,0,0,0.6);
+}
+
+.knob-wrapper input:checked + .knob {
+	transition: transform 0.2s;
+	box-shadow: 
+        0px 0px 10px 10px rgba(43, 255, 0, 0.1);
 }

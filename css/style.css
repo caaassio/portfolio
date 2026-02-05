@@ -155,7 +155,19 @@ body.light #logo img:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.6s ease;
+}
+
+#backToTop {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+}
+
+#backToTop.show {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.6s ease;
 }
 
 .btt .rocket{
@@ -287,7 +299,6 @@ header {
                 transition: all 0.2s ease-in-out;
                 animation: spin 4s linear infinite;
             }
-
         }
     }
 }
@@ -303,7 +314,6 @@ header {
   to   { --angle: 360deg; }
 }
 
-
 header ul a:link,
 header ul a:visited {
     color: var(--cor-texto);
@@ -316,38 +326,38 @@ header a:visited {
 }
 
 .switch {
-  position: static;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color:#34c759; 
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  z-index: 9999;
-  box-sizing: border-box;
-  cursor: pointer;
-  transition: background-color .3s ease;
+	position: static;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color:#34c759; 
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	z-index: 9999;
+	box-sizing: border-box;
+	cursor: pointer;
+	transition: background-color .3s ease;
 }
 
 .switch input {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  cursor: pointer;
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	cursor: pointer;
 }
 
 .switch i {
-  font-size: 30px;
-  color: #fff;
-  line-height: 1;
-  margin: 0;
-  padding: 0;
-  transition: transform .3s ease, color .3s ease;
-  pointer-events: none; 
+	font-size: 30px;
+	color: #fff;
+	line-height: 1;
+	margin: 0;
+	padding: 0;
+	transition: transform .3s ease, color .3s ease;
+	pointer-events: none; 
 }
 
 .switch.active { background-color: #85858569; }        
@@ -410,6 +420,7 @@ header a:visited {
 }
 
 .img-home{
+    height: 80%;
     padding: 0;
     margin: 0;
     display: flex;
@@ -419,18 +430,25 @@ header a:visited {
 }
 
 .img-home img{
-    width: 600px;
-    opacity: 1;
-    max-width: 100%;
     transform: translateX(0);
     box-sizing: border-box;
     overflow: hidden;
     transition: all 1s;
-    opacity: 0.6;
+    opacity: 0.3;
+}
+
+body.light .img-home img{
+    filter: invert(1);
+    opacity: 0.5;
+}
+
+body.light .img-home img:hover{
+    opacity: 0.15;
+    transition: all 1s;
 }
 
 .img-home img:hover{
-    opacity: 0.1;
+    opacity: 0.04;
     transition: all 1s;
 }
 
@@ -573,15 +591,12 @@ header a:visited {
 #about .section-title {
     font-size: 3.5em;
     display: flex;
-    background: teal; 
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: teal;
     margin: 0;
     padding: 20px;
-    width: 340px;
+    position: relative;
 }
-  
+
 .about-content {
     display: flex;
     gap: 40px;
@@ -905,7 +920,7 @@ header a:visited {
 }
 
 .social-icons i{
-    color:  var(--cor-texto);
+    color:  var(--link-redes);
     font-size: 1.8rem;
     transition: all 0.2s ease-in-out;
 }
@@ -1133,13 +1148,6 @@ header a:visited {
 
     #about{
         padding: 0 !important;
-    }
-
-    #about img {
-        width: 45%;
-        max-width: 90%;
-        padding: 0;
-        margin: 0;
     }
 
     .card{
