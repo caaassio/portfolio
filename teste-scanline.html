@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background: black;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        canvas{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="crt"> </canvas>
+    
+    <script>
+        const canvas = document.getElementById('crt');
+        const ctx = canvas.getContext('2d');
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        resize();
+        window.addEventListener('resize', resize);
+
+        const lineHeight = 8;
+        let offset = 0;
+
+        function draw(){
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            for(let y = offset; y < canvas.height; y += lineHeight*2) {
+                ctx.fillStyle = 'rgba(0, 255, 102, 0.25)';
+                ctx.fillRect(0, y, canvas.width, lineHeight);
+            }
+
+            offset += 1;
+            if(offset >= lineHeight*2) offset = 0;
+            requestAnimationFrame(draw);
+                
+        }
+
+        draw();
+
+    </script>
+</body>
+</html>

@@ -53,3 +53,37 @@ function atualizarHora() {
 atualizarHora();
 
 setInterval(atualizarHora, 1000);
+
+
+// ------------------------- crt / scanline ----------------------------------------
+const canvas = document.getElementById('crt');
+const ctx = canvas.getContext('2d');
+
+function resize() {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width = window.innerWidth + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+resize();
+window.addEventListener('resize', resize);
+
+const lineHeight = 8;
+let offset = 0;
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let y = offset; y < canvas.height; y += lineHeight * 2) {
+        ctx.fillStyle = 'rgba(63, 158, 101, 0.15)';
+        ctx.fillRect(0, y, canvas.width, lineHeight);
+    }
+
+    offset = (offset + 1) % (lineHeight * 2);
+    requestAnimationFrame(draw);
+}
+
+draw();

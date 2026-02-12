@@ -1,22 +1,43 @@
 html, body{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-image: url(../components/img/bg.jpg);
 }
 
 a{
     color: rgb(3, 255, 3);
 }
 
+
 #container{
-    position: relative;
+    position: absolute;
+    inset: 0;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    width: 1920px;
-    height: 925px;
-    background-image: url(../components/img/bg.jpg);
+    aspect-ratio: 4 / 3;
+    height: 100vh;
+    max-width: 100vw;
     z-index: 0; 
     overflow: hidden;
+}
+
+@font-face {
+    font-family: 'Parade Normal';
+    src: url('../components/fonts/Parade-Normal.otf') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 /* --------------------------------- Index ------------------------------ */
@@ -25,10 +46,10 @@ a{
     position:absolute;
     left: 0;
     top: 0;
-    height: 550px;
+    height: 600px;
     margin: 20px;
-    border: 5px solid white;
     z-index: 2;
+    image-rendering: pixelated;
 }
 
 .header h1{
@@ -40,15 +61,14 @@ a{
     left: 520px;
     font-size: 60px;
     flex-wrap: wrap;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family: 'Parade Normal', sans-serif;
     font-style: italic;
     font-weight: 300;
-    color: white;
+    color: #cce6ff;
     text-shadow:
-        0 0 5px #00f,
-        0 0 10px rgb(255, 255, 255),
-        0 0 50px rgb(136, 136, 255),
-        0 0 40px #00f;
+        0 0 3px #9fd3ff,
+        0 0 10px #7abfff,
+        0 0 20px #4da6ff;
     border-right: 15px solid rgba(171, 170, 255, 0.452);
     border-bottom: 15px solid rgba(100, 100, 112, 0.397);
     border-top: 15px solid rgba(255, 255, 255, 0.103);
@@ -84,7 +104,7 @@ ul.menu li::before {
     width: 15px;
     height: 15px;
     background-color: rgb(255, 255, 255); 
-    box-shadow: 0px 0px 10px 10px rgba(110, 94, 250, 0.342);
+    box-shadow: inset -2px -2px 5px 3px rgb(0, 0, 0, 0.8);
     border-radius: 50%; 
 }
 
@@ -102,13 +122,15 @@ ul.menu li::before {
 
 .barra-gradiente {
     height: 7px;
-    width: 1600px;
+    width: 90%;
     background: linear-gradient(to right, #3cff00, #0400ff, #51ff00);
-    margin: 5px auto 0 auto; 
     display: flex;
     position: absolute;
     top: 660px;
-    left: 100px;
+    border-top: 1px solid white;
+    border-left: 1px solid white;    
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 #data-hoje{
@@ -127,25 +149,42 @@ ul.menu li::before {
     position: absolute;
     color: rgb(3, 255, 3);
     top: 820px;
-    left: 1400px;
+    right: 190px;
     z-index: 5;
 }
 
 .selos {
-    margin-left: 270px;
     position: absolute;
     top: 700px;
-    display: block;
-    gap: 50px; 
-    width: 1250px; 
+    display: flex;
+    gap: 20px; 
+    width: 100%; 
     z-index: 10;
+    align-items: center; 
 }
 
-.selos img{
-    padding-left: 150px  !important;
+.selos img {
+    padding-left: 110px;
+    flex: 0 0 auto;
 }
 
 /* --------------------------------- Sobre ------------------------------ */
+
+#container-sobre{
+    position: relative;
+    flex-direction: column;
+    aspect-ratio: 4 / 3;
+    height: 100vh;
+    z-index: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+#container-sobre .barra-gradiente{
+    display: flex;
+    width: 100%;
+}
 
 .cubo{
     width: 400px;
@@ -155,7 +194,7 @@ ul.menu li::before {
     position: absolute;
     z-index: 3;
     top: 20px;
-    left: 480px;
+    left: 320px;
     overflow: visible;
 }
 
@@ -180,7 +219,8 @@ ul.menu li::before {
     height: 420px;
     width: auto;
     position: absolute;
-    left: 900px;
+    left: 740px;
+    top: 0;
 }
 
 .conteudo-texto{
@@ -189,20 +229,16 @@ ul.menu li::before {
     color: #51ff00;
     font-size: 18px;
     margin: 0;
-    padding: 0;
-    width: 800px;
-    height: 300px;
-    left: 450px;
+    padding: 0 150px;
+    width: 700px;
     top: 450px;
-    overflow: hidden;
 }
 
 .conteudo-texto p{
     line-height: 1;
-    margin: 0 !important;
 }
 
-.btn-voltar{
+#container-sobre .btn-voltar{
     display: flex;
     position: absolute;
     top: 830px;
@@ -210,6 +246,16 @@ ul.menu li::before {
 }
 
 /* --------------------------------- Portfolio ------------------------------ */
+
+#container-portfolio{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 4 / 3;
+    height: 100vh;
+    z-index: 0; 
+    overflow: hidden;
+}
 
 .header-portfolio .foto{
     height: 200px;
@@ -232,27 +278,47 @@ ul.menu li::before {
 }
 
 .galeria{
-    width: 1500px;
+    width: auto;
     display: flex;
     position: relative;
     top: 170px;
-    left: 150px;
-    gap: 10px;
+    left: 50px;
+    gap: 20px;
     flex-wrap: wrap;
     box-sizing: border-box !important;
 }
 
 .galeria img{
-    width: 290px;
+    width: 270px;
 }
 
 .img-port p{
     color: aquamarine;
 }
 
+#container-portfolio .btn-voltar{
+    display: flex;
+    position: absolute;
+    top: 830px;
+    left: 50px;
+}
+
 /* --------------------------------- Contato ------------------------------ */
+
+#container-contact{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 4 / 3;
+    height: 100vh;
+    z-index: 0; 
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
 .contato-gif{
-    left: 710px;
+    margin-left: auto;
+    margin-right: auto;
     top: 30px;
     width: 200px;
     box-sizing: border-box;
@@ -262,7 +328,7 @@ ul.menu li::before {
 .form{
     display: flex;
     position: relative;
-    left: 530px;
+    left: 25%;
     top: 50px;
     height: 600px;
     width: 600px;
@@ -287,8 +353,6 @@ input, textarea{
     width: 100px;
     border-radius: 0;
     background-color: rgb(175, 175, 175);
-    outline: 2px dotted #5c5c5c; 
-    outline-offset: -6px; 
 }
 
 .popup {
@@ -348,25 +412,49 @@ button.btn-popup:hover{
     background-color: rgb(163, 16, 16);
 }
 
+#container-contact .btn-voltar{
+    display: flex;
+    position: absolute;
+    top: 830px;
+    left: 50px;
+}
+
 /* --------------------------------- Rodapé ------------------------------ */
 footer {
-    width: 100%;
     position: relative;
     z-index: 9999;
 }
 
 .rodape{
-    position:fixed;
-    top: 874px;
+    position: absolute;
+    top: 865px;
     display: flex;
     align-items: center; 
     justify-content: center; 
     color: #3cff00;
     width: 100%;
-    margin: 0 auto;
-
 }
 
 .rodape p{
     flex-wrap: nowrap;
+}
+
+/* ------------------------------ crt / scanline -------------------------------- */
+canvas{
+    display: block;
+}
+
+.crt-wrapper{
+    overflow: hidden;
+    height: 100vh;
+}
+
+#crt{
+    position: fixed;
+    inset: 0; /* top:0 right:0 bottom:0 left:0 */
+
+    z-index: 9999;
+    pointer-events: none;
+
+    mix-blend-mode: screen; /* opcional, fica lindo */
 }
