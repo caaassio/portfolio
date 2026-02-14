@@ -3,69 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Awesome Web Site</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/crt.css">
     <link rel="stylesheet" href="./css/style90s.css">
-    <link rel="stylesheet" href="./css/style-toggle.css">
 
-    <link rel="shortcut icon" href="components/img/favicon90.ico">
-
+    <!-- fontawesome pro -->
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
+    
 </head>
 <body class="awesome-page">
-     
-        <!-- <audio autoplay loop>
-            <source src="./components/audio/song2.mp3" type="audio/mpeg">
-        </audio> -->
-    
-    <div id="container">
-                        
-        <div class="header">
 
-            <img class="foto" src="./components/img/foto80s.png" alt="">
+    <div class="crt">
+        <canvas id="crt-canvas"></canvas>
+        <div id="container">
+            <div id="page-content"></div>
 
-            <h1>
-                the <br>
-                Cassio Rodrigues <br>
-                portfolio
-            </h1>
-
-            <ul class="menu">
-                <li><a href="./awesome-about.html">Sobre</a></li>
-                <li><a href="./awesome-portfolio.html">Portfólio</a></li>
-                <li><a href="./awesome-contact.html">Contato</a></li>
-                <li><a href="./index.html">Sair do site incrível e voltar para o site normal</a></li>
-            </ul>
-
+            <footer class="rodape">
+                <p>Orgulhosamente web-desenhado por Cassio Rodrigues</p>
+            </footer>
         </div>
-
-        <div class="barra-gradiente"></div>
-    
-        <div class="data-e-hora">
-            <span id="data-hoje"></span>
-            <span id="hora-agora"></span>
-        </div>
-    
-        <div class="selos">
-            <img src="./components/img/bemvindo.gif" alt="">
-            <img src="./components/img/selo1.png" alt="">
-            <img src="./components/img/selo2.png" alt="">
-            <img src="./components/img/selo3.gif" alt="">
-        </div>
-
-        <footer class="rodape">
-        
-            <!-- <label class="knob-wrapper">
-                <input type="checkbox" id="toggleAwesome">
-                <div class="knob"></div>
-            </label> -->
-                        
-            <p>Orgulhosamente web-desenhado por Cassio Rodrigues</p>
-        
-        </footer>
-
-        <script src="./script90s.js"></script>
-        <script src="./script-toggle.js"></script>
-
     </div>
 
+    <script src="./js/loader.js"></script>
+    <script src="./js/crt.js"></script>
+    <script src="./js/clock.js"></script>
+    <script src="./js/script90s.js"></script>
+
 </body>
+
 </html>
