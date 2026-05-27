@@ -19,20 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 // ------------------- foguete ---------------------------
-// const rocketButton = document.getElementById('backToTop');
-
-// rocketButton.addEventListener('click', () => {
-//   rocketButton.classList.add('active');
-
-//   window.scrollTo({
-//     top: 0,
-//     behavior: 'smooth'
-//   });
-
-//   setTimeout(() => {
-//     rocketButton.classList.remove('active');
-//   }, 800);
-// });
 
 const rocketButton = document.getElementById('backToTop');
 const homeSection = document.getElementById('home');
@@ -306,52 +292,52 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // -------------------- menu active ---------------------------------
-const menuLinks = document.querySelectorAll('header ul li a.internal-link');
+// const menuLinks = document.querySelectorAll('header ul li a.internal-link');
 
-function setActiveLink() {
-    let index = -1;
+// function setActiveLink() {
+//     let index = -1;
 
-    document.querySelectorAll('section').forEach((section, i) => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= window.innerHeight / 2 && rect.bottom >= 0) {
-            index = i;
-        }
-    });
+//     document.querySelectorAll('section').forEach((section, i) => {
+//         const rect = section.getBoundingClientRect();
+//         if (rect.top <= window.innerHeight / 2 && rect.bottom >= 0) {
+//             index = i;
+//         }
+//     });
 
-    menuLinks.forEach(link => link.classList.remove('active'));
+//     menuLinks.forEach(link => link.classList.remove('active'));
 
-    if (index !== -1) {
-        const id = document.querySelectorAll('section')[index].id;
-        const activeLink = document.querySelector(`header ul li a[href="#${id}"]`);
-        if (activeLink) {
-            activeLink.classList.add('active');
-        }
-    }
-}
+//     if (index !== -1) {
+//         const id = document.querySelectorAll('section')[index].id;
+//         const activeLink = document.querySelector(`header ul li a[href="#${id}"]`);
+//         if (activeLink) {
+//             activeLink.classList.add('active');
+//         }
+//     }
+// }
 
-window.addEventListener('scroll', setActiveLink);
+// window.addEventListener('scroll', setActiveLink);
 
-setActiveLink();
+// setActiveLink();
 
 // ---------------- transparencia header --------------------------------------
-let lastScrollTop = 0;
-const header = document.querySelector('header');
+// let lastScrollTop = 0;
+// const header = document.querySelector('header');
 
-window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+// window.addEventListener('scroll', function() {
+//     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    if (scrollTop > lastScrollTop) {
+//     if (scrollTop > lastScrollTop) {
 
-      header.style.transform = 'translateY(-100%)';
-    } else {
+//       header.style.transform = 'translateY(-100%)';
+//     } else {
 
-      header.style.transform = 'translateY(0)';
-    }
+//       header.style.transform = 'translateY(0)';
+//     }
     
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
-});
+//     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+// });
 
-// toasty
+//-------------------------------- toasty-----------------------------------------------------
 const knob = document.querySelector('.knob-wrapper');
 const egg = document.querySelector('.easter-egg');
 
