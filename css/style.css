@@ -327,46 +327,6 @@ header a:visited {
     color: var(--cor-texto);
 }
 
-.switch {
-	display: flex;
-    position: relative;
-	align-items: center;
-	justify-content: center;
-	background-color:#34c759; 
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
-	z-index: 9999;
-	box-sizing: border-box;
-	cursor: pointer;
-	transition: background-color .3s ease;
-}
-
-.switch input {
-	position: absolute;
-	inset: 0;
-	opacity: 0;
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	cursor: pointer;
-}
-
-.switch i {
-	font-size: 30px;
-	color: #fff;
-	line-height: 1;
-	margin: 0;
-	padding: 0;
-	transition: transform .3s ease, color .3s ease;
-	pointer-events: none; 
-}
-
-.switch.active { background-color: #85858569; }        
-.switch.active i { color: #ffffff; }
-
-.switch:hover i { transform: rotate(-15deg) scale(1.05); }
-
 .link-logo{
     color: var(--cor-texto);
 }
@@ -636,40 +596,37 @@ header a:visited {
 
 .group-card{
     display: flex;
-    gap: 35px;
+    gap: 15px;
     flex-wrap: wrap;
     box-sizing: border-box;
     justify-content: center;
     align-items: flex-start;
-
 }
 
 .card{
-    width: 45%;
-    height: 575px;
-    padding: 20px;
+    width: 49%;
+    aspect-ratio: 5 / 4;
     transition: transform 0.3s ease-in-out, opacity 0.5s ease-out;
     position: relative;
-    border-radius: 20px;
     box-shadow: var(--sombra);
     cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+	display: flex;
+	justify-content: center;
     box-sizing: border-box;
-
-    border: 1px solid purple;
+    object-fit: contain;
+    overflow: hidden;
+    border-radius: 15px;
 }
 
 .card:hover{
-    transform: scale(1.03);
+    /* transform: scale(1.03); */
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .card p{
     display: flex;
     flex-direction: column;
-    padding: 20px 5px;
+
     margin: 0;
     flex-grow: 1; 
     box-sizing: border-box;
@@ -677,8 +634,16 @@ header a:visited {
 }
 
 .card img{
-    width: 100%;
     display: flex;
+    border-radius: 20px;
+
+	object-fit: contain;
+}
+
+.card picture img{
+    display: flex;
+    border-radius: 20px;
+    margin: 0 auto;
 }
 
 .card a{
@@ -694,11 +659,22 @@ header a:visited {
     filter: opacity(0.8);
 }
 
-.card-icons{
-    font-size: 26px;
-    display: flex;
-    gap: 20px;
-    padding: 5px 15px;
+.card-info {
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
+
+	opacity: 0;
+	transform: translateY(20px);
+
+	transition:
+		opacity .4s ease,
+		transform .4s ease;
+}
+
+.card:hover .card-info {
+	opacity: 1;
+	transform: translateY(0);
 }
 
 .modal {
@@ -735,7 +711,7 @@ header a:visited {
 }
 
 .modal-content {
-    background: var(--cor-card);
+    background: white;
     padding: 40px 60px;
     border-radius: 15px;
     width: 90vw;
@@ -779,7 +755,7 @@ header a:visited {
 }
 
 .carousel-images {
-    height: auto;
+    height: 100%;
     display: flex;
     overflow: hidden;
     position: relative;
@@ -793,12 +769,8 @@ header a:visited {
 
 .carousel-image {
     display: none;
-    width: 80%;
-    height: 80%;
-    object-fit: contain; 
+    height: 100%;
     border-radius: 10px;
-    max-width: 80%;
-    max-height: 80%;
 }
 
 .carousel-image.active {
