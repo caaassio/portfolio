@@ -281,14 +281,16 @@ ul.menu li::before {
     display: flex;
     position: relative;
     top: 170px;
-    left: 50px;
+    left: 0px;
     gap: 20px;
     flex-wrap: wrap;
     box-sizing: border-box !important;
 }
 
 .galeria img{
-    width: 270px;
+    width: 230px;
+    height: 230px;
+    object-fit: cover;
 }
 
 .img-port p{
