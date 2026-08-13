@@ -43,6 +43,8 @@ html, body{
     --txt-active: rgb(27, 27, 27);
     --color-name: teal;
     --link-redes: rgb(39, 39, 39);
+    --role-size: 1.8rem;
+    --role-step: 2.5rem;
  } 
 
 /* .light{
@@ -230,7 +232,6 @@ header {
     transition: transform 0.3s ease-in-out;
     mix-blend-mode: difference;
     filter: invert(100);
-
 }
 
 header ul {
@@ -265,7 +266,7 @@ header ul li a{
 }
 
 header ul li a:hover{
-    font-size: 1.1em;
+    transform: scale(1.1);
     transition: all 0.4s ease-in-out;
 }
 
@@ -279,7 +280,7 @@ header ul li a:hover{
 .brackets-link::before,
 .brackets-link::after {
     position: absolute;
-    font-size: 1.2em;
+    font-size: 22px;
     transition: transform 0.35s ease, opacity 0.35s ease;
 }
 
@@ -348,30 +349,6 @@ header a:visited {
     flex-direction: column;
     box-sizing: border-box;
 }
-
-.txt-home {
-    width: 46ch;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    font-size: 1.5rem;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.txt-home-mobile{
-    display: none;
-}
-
-.txt-home::after {
-    content: "";
-    width: 3px;
-    height: 1.5rem;
-    background:  var(--cor-texto);
-    display: inline-block;
-    margin-left: 5px;
-    animation: blink 0.7s step-end infinite;
-} 
   
 @keyframes blink {
     50% { opacity: 0; }
@@ -397,7 +374,6 @@ header a:visited {
     overflow: hidden;
     transition: all 1s;
     opacity: 0.3;
-    /* filter: invert(100); */
 }
 
 .img-home img:hover{
@@ -408,14 +384,47 @@ header a:visited {
 .txt-home-name{
     display: flex;
     flex-direction: column;
+}
 
-    & span:first-child {
-        font-size: 3.5rem;
+.name {
+    font-size: 3.5rem;
+    white-space: nowrap;
+}
+
+.roles-container{
+    height: var(--role-step);
+    overflow: hidden;
+    position: relative;
+}
+
+.roles{
+    display: flex;
+    flex-direction: column;
+    animation: changeRole 4.5s infinite linear;
+}
+
+.role{
+    display: flex;
+    align-items: center;
+    font-size: var(--role-size);
+    line-height: 1.2;
+    min-height: var(--role-step);
+    color: var(--color-name);
+    white-space: nowrap;
+}
+
+@keyframes changeRole {
+    0%, 26% {
+        transform: translateY(0);
     }
-
-    & span:nth-child(2){
-        font-size: 2rem;
-        color: var(--color-name);
+    33%, 59% {
+        transform: translateY(calc(-1 * var(--role-step)));
+    }
+    66%, 92% {
+        transform: translateY(calc(-2 * var(--role-step)));
+    }
+    100% {
+        transform: translateY(calc(-3 * var(--role-step)));
     }
 }
 
@@ -583,8 +592,6 @@ header a:visited {
     padding-top: 30px;
     overflow: hidden;
     padding-bottom: 70px;
-
-    border: 1px solid red;
 }
 
 #portfolio h2 {
@@ -636,12 +643,11 @@ header a:visited {
 .card img{
     display: flex;
     border-radius: 20px;
-
 	object-fit: contain;
 }
 
 .card picture img{
-    display: flex;
+    display: block;
     border-radius: 20px;
     margin: 0 auto;
 }
@@ -661,20 +667,39 @@ header a:visited {
 
 .card-info {
 	position: absolute;
+    display: flex;
+    width: 95%;
 	left: 20px;
-	bottom: 20px;
-
+	bottom: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
 	opacity: 0;
 	transform: translateY(20px);
 
 	transition:
 		opacity .4s ease,
 		transform .4s ease;
+
+    mix-blend-mode: difference;
+    filter: invert(100);
+}
+
+.card-info span:last-child {
+  margin-left: auto;
 }
 
 .card:hover .card-info {
 	opacity: 1;
 	transform: translateY(0);
+}
+
+.card-trims picture{
+    display: flex;
+    justify-content: center;
+}
+
+.card-trims picture img{
+    object-position: center;
 }
 
 .modal {

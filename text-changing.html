@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  background: #212121;
+}
+
+.text-changer{
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  color: #7c7c7c;
+  font-family: 'Poppins', sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.intro-text{
+  margin: 0;
+}
+
+.roles-container{
+  height: 30px;
+  overflow: hidden;
+}
+
+.roles span{
+  height: 30px;
+  line-height: 30px;
+  padding-left: 6px;
+  color: #956afa;
+}
+
+.roles{
+  display: flex;
+  flex-direction: column;
+  animation: role-change 6s infinite linear;
+}
+
+@keyframes role-change {
+  0%, 16%   { transform: translateY(0); }
+  20%, 36%  { transform: translateY(-30px); }
+  40%, 56%  { transform: translateY(-60px); }
+  60%, 76%  { transform: translateY(-90px); }
+  80%, 96%  { transform: translateY(-120px); }
+  100%      { transform: translateY(-150px); } /* 1 duplicado, sem pausa */
+} </style>
+</head>
+<body>
+    <div class="text-changer">
+        <p class="intro-text">I am a</p>
+        <div class="roles-container">
+            <div class="roles">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>1</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
