@@ -1,16 +1,17 @@
 // -------------- toggle menu --------------------------------
 document.addEventListener("DOMContentLoaded", function () {
-    
+
     const menuBtn = document.getElementById("menu-btn");
     const menu = document.querySelector("header ul");
 
-    if (menuBtn && menu) {
-        menuBtn.addEventListener("click", function () {
-            menu.classList.toggle("show");
-        });
-    }
+    if (!menuBtn || !menu) return;
+
+    menuBtn.addEventListener("click", function () {
+        menu.classList.toggle("show");
+    });
 
     const links = menu.querySelectorAll("a");
+
     links.forEach(link => {
         link.addEventListener("click", () => {
             menu.classList.remove("show");
@@ -207,30 +208,6 @@ const observer = new IntersectionObserver((entries) => {
 
 observer.observe(botao);
 
-
-// ------------------- toggle light -------------------------------
-(function() {
-  const body = document.body;
-  const switchBtn = document.getElementById('themeSwitch');
-  const checkbox = document.getElementById('themeToggle');
-
-  function applyTheme(theme) {
-    const isLight = theme === 'light';
-    body.classList.toggle('light', isLight);
-    body.classList.toggle('dark', !isLight);
-    checkbox.checked = isLight;
-    switchBtn.classList.toggle('active', isLight);
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  }
-
-  const saved = localStorage.getItem('theme') ||
-                (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-  applyTheme(saved);
-
-  checkbox.addEventListener('change', () => {
-    applyTheme(checkbox.checked ? 'light' : 'dark');
-  });
-})();
 
 // ---------------------- Pop sério? ------------------------------
 document.addEventListener('DOMContentLoaded', () => {
