@@ -1518,6 +1518,10 @@ header a:visited {
         }
     }
 
+    .role{
+        font-size: 1.5rem !important;
+    }
+
     .btns-home{
         display: flex;
         flex-direction: column;
@@ -1561,6 +1565,7 @@ header a:visited {
         width: 100vw;
         margin-left: 20px;
         letter-spacing: -6px;
+        line-height: 0.8;
     }
 
     .about-content {
@@ -1795,7 +1800,19 @@ header a:visited {
         transform: translateX(-50px);
     }
 
-    .toggle-awesome{
+    .knob-wrapper{
         display: none !important;
+    }
+
+    footer{
+        height: 50px !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    footer p{
+        font-size: 14px;
+        padding: 0;
+        margin: 0;
     }
 }
