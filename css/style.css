@@ -37,7 +37,7 @@ html, body{
     --cor-texto: rgb(2, 2, 2);
     --texto-hover: rgb(224, 22, 22);
     --cor-card: #2c253f;
-    --btn-hover: rgb(196, 20, 20);
+    --btn-hover: #523e8a;
     --gradiente: linear-gradient(to right, #1d1630, teal);
     --sombra: 5px 5px 10px 3px rgba(0, 0, 0, 0.05);
     --txt-active: rgb(27, 27, 27);
@@ -502,12 +502,12 @@ header a:visited {
             font-size: 2rem;
             gap: 20px;
             color: var(--link-redes);
-            transition: all 0.4s ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
 
         i:hover{
             color: var(--btn-hover);
-            transition: all 0.4s ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
 
         a:visited{
@@ -705,6 +705,15 @@ header a:visited {
 }
 
 .card-trims picture img{
+    object-position: center;
+}
+
+.card-kustor picture{
+    display: flex;
+    justify-content: center;
+}
+
+.card-kustor picture img{
     object-position: center;
 }
 

@@ -107,7 +107,9 @@ cards.forEach(card => {
       card.getAttribute('data-img-3'),
       card.getAttribute('data-img-4'),
       card.getAttribute('data-img-5'),
-      card.getAttribute('data-img-6')
+      card.getAttribute('data-img-6'),
+      card.getAttribute('data-img-7'),
+      card.getAttribute('data-img-8')
     ].filter(src => !!src); 
 
     carouselImages = [];
