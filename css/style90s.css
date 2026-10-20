@@ -334,16 +334,14 @@ ul.menu li::before {
     object-fit: cover;
     cursor: pointer;
 }
-/* Fundo atrás da janela */
+
 .popup-overlay {
     position: fixed;
     inset: 0;
     z-index: 9999;
-
     display: none;
     justify-content: center;
     align-items: center;
-
     padding: 20px;
     background: rgba(0, 0, 0, 0.65);
 }
@@ -352,62 +350,48 @@ ul.menu li::before {
     display: flex;
 }
 
-/* Janela Windows 95 */
 .popup-janela {
     width: fit-content;
     max-width: 90vw;
     max-height: 90vh;
-
     padding: 3px;
     background: #c0c0c0;
-
     border-top: 2px solid #ffffff;
     border-left: 2px solid #ffffff;
     border-right: 2px solid #404040;
     border-bottom: 2px solid #404040;
-
     box-shadow: 2px 2px 0 #000000;
 }
 
-/* Barra azul */
 .popup-titulo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     height: 28px;
     padding: 2px 3px 2px 8px;
-
     background: linear-gradient(90deg, #000080, #1084d0);
-
     color: white;
     font-family: Arial, sans-serif;
     font-size: 13px;
     font-weight: bold;
 }
 
-/* Botão de fechar */
 .popup-fechar {
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 22px;
     height: 22px;
     padding: 0;
-
     background: #c0c0c0;
     color: #000;
-
     border-top: 2px solid white;
     border-left: 2px solid white;
     border-right: 2px solid #404040;
     border-bottom: 2px solid #404040;
-
     font-size: 17px;
     font-weight: bold;
     line-height: 1;
-
     cursor: pointer;
 }
 
@@ -418,32 +402,25 @@ ul.menu li::before {
     border-bottom: 2px solid white;
 }
 
-/* Área da imagem */
 .popup-conteudo {
     display: flex;
     justify-content: center;
     align-items: center;
-
     padding: 10px;
     margin-top: 3px;
-
     max-height: calc(90vh - 90px);
     overflow: auto;
 }
 
 .popup-conteudo img {
     display: block;
-
     max-width: calc(90vw - 50px);
     max-height: calc(90vh - 130px);
-
     width: auto;
     height: auto;
-
     object-fit: contain;
 }
 
-/* Barra inferior */
 .popup-navegacao {
     display: flex;
     justify-content: space-between;
@@ -456,43 +433,35 @@ ul.menu li::before {
     font-size: 12px;
 }
 
-/* Botões cinza em relevo */
 .popup-btn {
     min-height: 27px;
     padding: 4px 10px;
-
     background: #c0c0c0;
     color: #000;
-
     border-top: 2px solid white;
     border-left: 2px solid white;
     border-right: 2px solid #404040;
     border-bottom: 2px solid #404040;
-
     font-family: Arial, sans-serif;
     font-size: 12px;
-
     cursor: pointer;
 }
 
-/* Efeito de botão pressionado */
+
 .popup-btn:active {
     border-top: 2px solid #404040;
     border-left: 2px solid #404040;
     border-right: 2px solid white;
     border-bottom: 2px solid white;
-
     padding-top: 5px;
     padding-bottom: 3px;
 }
 
-/* Contador */
 #popup-contador {
     white-space: nowrap;
     font-weight: bold;
 }
 
-/* Ajustes para telas pequenas */
 @media (max-width: 480px) {
     .popup-navegacao {
         gap: 5px;
